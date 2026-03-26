@@ -1,0 +1,18 @@
+{
+  agents: {
+    defaults: {
+      skipBootstrap: true,
+      bootstrapMaxChars: 20000,
+      bootstrapTotalMaxChars: 150000,
+      heartbeat: {
+        every: "1h",
+      },
+    },
+  },
+  tools: {
+    exec: {
+      host: "sandbox",
+      pathPrepend: ["/sandbox/.local/bin"],
+    },
+  },
+}

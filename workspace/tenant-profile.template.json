@@ -1,0 +1,71 @@
+{
+  "tenant_id": "{{tenant_id}}",
+  "display_name": "{{assistant_display_name}}",
+  "operator": {
+    "name": "{{principal_name}}",
+    "business_name": "{{business_name}}",
+    "timezone": "{{timezone}}",
+    "territory": "{{territory}}"
+  },
+  "communication": {
+    "tone": "{{tone}}",
+    "verbosity": "{{verbosity}}",
+    "primary_channel": "{{primary_channel}}",
+    "acknowledgement_enabled": true,
+    "long_task_updates_enabled": true
+  },
+  "workflow_priorities": {
+    "primary_mix": [
+      "{{workflow_1}}",
+      "{{workflow_2}}"
+    ],
+    "assistant_owns_first": [
+      "{{ownership_1}}",
+      "{{ownership_2}}"
+    ],
+    "biggest_friction": [
+      "{{friction_1}}",
+      "{{friction_2}}"
+    ]
+  },
+  "systems": {
+    "messaging": "{{primary_channel}}",
+    "crm": "{{crm}}",
+    "storage": "{{storage_system}}",
+    "portal_tools": [
+      "{{portal_1}}",
+      "{{portal_2}}"
+    ],
+    "document_tools": [
+      "{{document_tool_1}}"
+    ]
+  },
+  "automation": {
+    "heartbeat_enabled": true,
+    "morning_brief_enabled": true,
+    "end_of_day_summary_enabled": true,
+    "stale_follow_up_review_enabled": true
+  },
+  "behavior_defaults": {
+    "default_to_drafts": true,
+    "default_to_structured_briefs": true,
+    "default_to_follow_up_help": true,
+    "default_to_admin_organization": true,
+    "proactivity_level": "{{proactivity_level}}"
+  },
+  "approval_boundaries": {
+    "client_facing_sends_require_approval": true,
+    "crm_writes_require_approval": true,
+    "portal_submissions_require_approval": true,
+    "contract_actions_require_approval": true
+  },
+  "secret_references": {
+    "messaging_secret": "{{channel_secret_ref}}",
+    "email_secret": "{{email_secret_ref}}",
+    "crm_secret": "{{crm_secret_ref}}",
+    "portal_secrets": [
+      "{{portal_secret_ref_1}}"
+    ],
+    "document_tool_secret": "{{document_tool_secret_ref}}"
+  }
+}
