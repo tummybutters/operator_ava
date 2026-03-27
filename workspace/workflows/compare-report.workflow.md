@@ -1,0 +1,35 @@
+# Compare Report Workflow
+
+- Name: compare-report
+- Purpose: compare two exports, bucket exceptions, and produce an operator-readable report
+- Trigger: monthly comparison, before/after export review, anomaly check, report request
+- Inputs required:
+  - source A
+  - source B
+  - stable key or best available matching rule
+- Inputs helpful:
+  - materiality threshold
+  - desired exception buckets
+  - preferred output format
+- Systems touched:
+  - spreadsheet tools
+  - local scripts or CLI utilities
+- Source artifacts:
+  - export A
+  - export B
+- Output artifacts:
+  - comparison summary
+  - sectioned workbook or report
+  - review bucket for ambiguous rows
+- Approval gates:
+  - before external send
+- Naming rules:
+  - include the periods or versions being compared
+- Filing rules:
+  - store near the reporting or operations folder when that exists
+- Delivery rules:
+  - summarize the key deltas, not just the raw diff
+- Failure or fallback handling:
+  - if matching is imperfect, surface a review bucket instead of hiding uncertainty
+- Notes:
+  - prefer exception-first reporting over giant dumps

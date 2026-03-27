@@ -9,6 +9,11 @@ Included in this preset:
 - `opportunity-intake`
 - `follow-up-drafting`
 - `crm-note-prep`
+- `quote-factory`
+- `spreadsheet-ops`
+- `data-compare-reporting`
+- `delivery-packaging`
+- `document-assembly`
 - `dream-memory-consolidation`
 - `sales-rhythm`
 - `playwright-cli`

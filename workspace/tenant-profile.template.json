@@ -30,6 +30,8 @@
   },
   "systems": {
     "messaging": "{{primary_channel}}",
+    "email": "{{email_layer}}",
+    "google_workspace": "{{google_workspace_usage}}",
     "crm": "{{crm}}",
     "storage": "{{storage_system}}",
     "portal_tools": [
@@ -38,13 +40,25 @@
     ],
     "document_tools": [
       "{{document_tool_1}}"
+    ],
+    "artifact_tools": [
+      "{{artifact_tool_1}}",
+      "{{artifact_tool_2}}"
     ]
   },
   "automation": {
     "heartbeat_enabled": true,
     "morning_brief_enabled": true,
     "end_of_day_summary_enabled": true,
-    "stale_follow_up_review_enabled": true
+    "stale_follow_up_review_enabled": true,
+    "long_task_updates_enabled": true
+  },
+  "workflow_defaults": {
+    "quote_factory_enabled": true,
+    "spreadsheet_ops_enabled": true,
+    "data_compare_reporting_enabled": true,
+    "delivery_packaging_enabled": true,
+    "document_assembly_enabled": true
   },
   "behavior_defaults": {
     "default_to_drafts": true,

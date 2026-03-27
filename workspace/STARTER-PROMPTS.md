@@ -89,3 +89,32 @@ Update HEARTBEAT.md so the assistant checks for:
 
 Keep the default rhythm lightweight and easy to customize later.
 ```
+
+## Quote Factory
+
+```text
+Install a lightweight quote-factory groove for this workspace.
+
+When I ask for an internet quote, UC quote, comparison quote, or revision, organize the work into:
+- source artifact
+- preview artifact
+- final artifact
+- short operator summary
+
+Do not hardcode provider-specific doctrine unless my real workflow clearly requires it.
+Keep the structure reusable and easy to personalize later.
+```
+
+## Reporting And Spreadsheet Ops
+
+```text
+Install lightweight spreadsheet and reporting grooves for this workspace.
+
+The assistant should:
+- preserve workbook structure when editing spreadsheets
+- compare two exports using a stable key when possible
+- bucket exceptions into useful sections
+- produce operator-readable reports instead of raw diffs
+
+Keep this as a default operating pattern, not a rigid house format.
+```

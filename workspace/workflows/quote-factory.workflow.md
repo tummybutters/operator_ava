@@ -1,0 +1,41 @@
+# Quote Factory Workflow
+
+- Name: quote-factory
+- Purpose: turn a quote request into a reviewable pack with source, preview, final, and summary artifacts
+- Trigger: new quote request, quote revision, provider comparison, internet or UC proposal work
+- Inputs required:
+  - company or prospect
+  - quote need
+  - provider(s) in scope or comparison intent
+- Inputs helpful:
+  - address
+  - seat count
+  - product mix
+  - current bill or incumbent
+  - preferred template style
+- Systems touched:
+  - browser / portal tools
+  - spreadsheet tools
+  - document generation tools
+- Source artifacts:
+  - proposal shell
+  - spreadsheet or pricing notes
+  - supporting screenshots or provider data
+- Output artifacts:
+  - source artifact
+  - preview artifact
+  - final artifact
+  - short operator summary
+- Approval gates:
+  - before any external send
+  - before any irreversible portal submission
+- Naming rules:
+  - keep filenames readable, stable, and customer-safe
+- Filing rules:
+  - note intended filing target even if filing is not yet completed
+- Delivery rules:
+  - separate packaging from sending
+- Failure or fallback handling:
+  - if pricing is incomplete, deliver a clean draft pack and identify the missing inputs
+- Notes:
+  - prefer reusable shells and structure over one-off fancy documents

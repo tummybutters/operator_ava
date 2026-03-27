@@ -1,0 +1,34 @@
+# Document Packaging Workflow
+
+- Name: document-packaging
+- Purpose: clean up artifact names, package deliverables, and prepare approval-safe handoff
+- Trigger: files are ready for review, send, filing, or bundling
+- Inputs required:
+  - artifact inventory
+  - intended audience
+- Inputs helpful:
+  - preferred filename style
+  - target channel
+  - filing destination
+- Systems touched:
+  - local filesystem
+  - email or messaging tools if approved
+- Source artifacts:
+  - editable working files
+  - supporting attachments
+- Output artifacts:
+  - clean final filenames
+  - short internal summary
+  - optional external draft
+- Approval gates:
+  - before any external send
+- Naming rules:
+  - clear, stable, human-readable
+- Filing rules:
+  - specify target even when final filing still needs review
+- Delivery rules:
+  - separate packaging from sending
+- Failure or fallback handling:
+  - if final readiness is unclear, package as review-needed instead of ready-to-send
+- Notes:
+  - every pack should make next steps obvious

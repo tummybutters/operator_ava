@@ -28,6 +28,8 @@ What does not belong here:
 - `workspace/STARTER-PROMPTS.md` - operator-facing setup prompt pack
 - `workspace/MVP-DEFINITION.md` - scope and product-shape reference
 - `workspace/skills/` - workspace-local skills with highest precedence
+- `workspace/workflows/` - reusable workflow manifests
+- `workspace/quote-templates/` - sanitized proposal shells and structure examples
 - `factory/` - tenant-creation and cloud-personalization templates
 - `config/openclaw.base.json5` - base config for a fresh writable state dir
 - `scripts/bootstrap-sandbox.sh` - installs sandbox-safe runtime dependencies
@@ -43,6 +45,11 @@ The preset now ships with tenant-agnostic workflow playbooks for:
 - structured opportunity intake
 - follow-up drafting
 - CRM-ready note prep
+- quote-factory support
+- spreadsheet-preserving ops
+- data-compare reporting
+- delivery packaging
+- document assembly
 - memory consolidation and pruning
 - morning brief and end-of-day summary rhythms
 - browser and portal work
@@ -54,6 +61,8 @@ The preset now ships with tenant-agnostic workflow playbooks for:
 Most of these are intentionally lightweight defaults.
 
 The base preset should teach the agent what tools exist and provide small starting patterns, while leaving deeper formatting, rhythm, and workflow preferences to onboarding and real usage. The main exception is clearly reusable operational playbooks like PDF form filling and memory consolidation.
+
+It should preload capability scaffolds, not tenant doctrine.
 
 ## Factory Flow
 

@@ -46,3 +46,4 @@ Do not store secrets, passwords, MFA codes, tokens, or one-off task clutter here
 - Keep client-facing work approval-gated unless explicitly authorized.
 - Keep memory clean and useful.
 - Prefer reusable playbooks over stuffing workflow rules into memory.
+- Promote stable workflow lessons into skills, workflow manifests, or typed memory notes instead of leaving them buried in daily logs.

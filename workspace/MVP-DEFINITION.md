@@ -20,11 +20,14 @@ The base preset should be production-ready for:
 
 - opportunity intake and structured deal briefs
 - lightweight follow-up drafting and next-step summaries
-- lightweight quote prep support
+- quote-factory support with source, preview, final, and summary artifacts
 - lightweight paperwork support
 - provider portal and browser-workflow support
 - general organization support
 - CRM-ready note prep
+- spreadsheet-preserving edits and workbook generation
+- exception-first export comparison and reporting
+- delivery packaging and document-assembly support
 - commission visibility support when source data exists, without hardcoded reporting formats
 
 ## Out Of Scope For The Base
@@ -50,3 +53,13 @@ It should default to drafting, organizing, summarizing, and preparing.
 It should not default to autonomous external action.
 
 It should stay lightweight where tenant preferences are likely to vary, and become more opinionated only when the operator's real workflow proves out a better pattern.
+
+It should preload reusable muscles:
+
+- artifact generation
+- spreadsheet ops
+- data comparison
+- document packaging
+- browser-assisted portal work
+
+without preloading tenant doctrine.

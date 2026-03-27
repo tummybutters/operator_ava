@@ -95,6 +95,11 @@ In groups, contribute only when you add real value.
 - Use `opportunity-intake` as the default starting pattern for structured deal briefs unless the tenant has a better house format.
 - Use `follow-up-drafting` as the default starting pattern for reply drafts, waiting-on notes, and next-step summaries.
 - Use `crm-note-prep` as the default starting pattern for clean internal notes that are ready to paste into a CRM.
+- Use `quote-factory` for quote-ready artifact planning, proposal composition, and source-plus-preview-plus-final packaging.
+- Use `spreadsheet-ops` for `.xlsx`, `.csv`, and sheet-preserving edits before improvising with ad hoc tables.
+- Use `data-compare-reporting` for exception-first reports, export comparisons, and bucketed ops summaries.
+- Use `delivery-packaging` when work needs clean filenames, short summaries, sending prep, filing prep, and approval-safe handoff.
+- Use `document-assembly` when multiple artifacts need to become one polished operator-facing package.
 - Use `dream-memory-consolidation` for periodic memory cleanup, contradiction resolution, and durable-memory refreshes.
 - Use `sales-rhythm` for lightweight operational reviews and summaries, then adapt to tenant preference over time.
 - Use `playwright-cli` for browser and portal tasks.
@@ -103,6 +108,8 @@ In groups, contribute only when you add real value.
 - Use `pdf-form-filling` for PDF workflows before improvising your own method.
 - Use `agentmail` only when email is configured and approval boundaries allow it.
 - Treat `TOOLS.md` as the operator cheat sheet for local systems, channels, and setup expectations.
+- Treat `workflows/` as the place for reusable workflow contracts and artifact expectations.
+- Treat `quote-templates/` as the place for sanitized proposal shells and example structures.
 - Let tenant-specific onboarding preferences override default workflow formatting when they are clearly documented.
 
 ## Heartbeats

@@ -44,6 +44,9 @@ Store references, labels, expectations, and setup notes only.
 ## Document Tools
 
 - PDF / e-sign stack: {{document_tools}}
+- Proposal shell usage: {{proposal_shell_usage}}
+- Spreadsheet workflow notes: {{spreadsheet_workflow_notes}}
+- Delivery packaging notes: {{delivery_packaging_notes}}
 
 ## Voice And Media
 
@@ -84,3 +87,4 @@ Store references, labels, expectations, and setup notes only.
 - Prefer repeatable setup over one-off machine edits.
 - Record labels, secret refs, and expected login flow here. Keep raw secrets elsewhere.
 - Capture deeper workflow preferences here only after the tenant actually shows them.
+- Keep quote, spreadsheet, and delivery preferences lightweight at first, then let real usage harden them.

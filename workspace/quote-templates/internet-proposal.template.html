@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Internet Services Proposal</title>
+    <style>
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        margin: 0;
+        color: #1f2937;
+        background: #f5f7fb;
+      }
+      .page {
+        width: 8.5in;
+        min-height: 11in;
+        margin: 0 auto;
+        background: #fff;
+        padding: 0.45in;
+        box-sizing: border-box;
+      }
+      .hero {
+        background: #12324a;
+        color: #fff;
+        padding: 18px 22px;
+        border-radius: 14px;
+      }
+      .hero h1 {
+        margin: 0 0 6px;
+        font-size: 26px;
+      }
+      .hero p {
+        margin: 0;
+        font-size: 14px;
+        opacity: 0.88;
+      }
+      .meta,
+      .section,
+      .notes {
+        margin-top: 18px;
+      }
+      .meta-grid,
+      .option-grid {
+        display: grid;
+        gap: 12px;
+      }
+      .meta-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .option-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .card {
+        border: 1px solid #d9e2ec;
+        border-radius: 12px;
+        padding: 14px;
+        background: #fbfdff;
+      }
+      h2 {
+        font-size: 17px;
+        margin: 0 0 10px;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 13px;
+      }
+      th,
+      td {
+        border-bottom: 1px solid #e5e7eb;
+        text-align: left;
+        padding: 8px 6px;
+      }
+      th {
+        color: #475569;
+        font-weight: 600;
+      }
+      .footer {
+        margin-top: 20px;
+        font-size: 12px;
+        color: #64748b;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <section class="hero">
+        <h1>Internet Services Proposal</h1>
+        <p>Prepared for {{company_name}} | Draft shell</p>
+      </section>
+
+      <section class="meta">
+        <div class="meta-grid">
+          <div class="card"><strong>Prepared for</strong><br />{{company_name}}</div>
+          <div class="card"><strong>Service address</strong><br />{{service_address}}</div>
+          <div class="card"><strong>Date</strong><br />{{proposal_date}}</div>
+          <div class="card"><strong>Prepared by</strong><br />{{prepared_by_block}}</div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Serviceability Summary</h2>
+        <div class="option-grid">
+          <div class="card">
+            <strong>{{provider_a}}</strong>
+            <p>{{provider_a_summary}}</p>
+          </div>
+          <div class="card">
+            <strong>{{provider_b}}</strong>
+            <p>{{provider_b_summary}}</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Broadband Options</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Provider</th>
+              <th>Service</th>
+              <th>Speed</th>
+              <th>Monthly</th>
+              <th>One-time</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{provider_a}}</td>
+              <td>{{broadband_option_1}}</td>
+              <td>{{speed_1}}</td>
+              <td>{{monthly_1}}</td>
+              <td>{{onetime_1}}</td>
+            </tr>
+            <tr>
+              <td>{{provider_b}}</td>
+              <td>{{broadband_option_2}}</td>
+              <td>{{speed_2}}</td>
+              <td>{{monthly_2}}</td>
+              <td>{{onetime_2}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="section">
+        <h2>Dedicated Options</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Provider</th>
+              <th>Service</th>
+              <th>Speed</th>
+              <th>Monthly</th>
+              <th>One-time</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{provider_a}}</td>
+              <td>{{dedicated_option_1}}</td>
+              <td>{{dedicated_speed_1}}</td>
+              <td>{{dedicated_monthly_1}}</td>
+              <td>{{dedicated_onetime_1}}</td>
+            </tr>
+            <tr>
+              <td>{{provider_b}}</td>
+              <td>{{dedicated_option_2}}</td>
+              <td>{{dedicated_speed_2}}</td>
+              <td>{{dedicated_monthly_2}}</td>
+              <td>{{dedicated_onetime_2}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="notes card">
+        <h2>Notes</h2>
+        <p>{{proposal_notes}}</p>
+      </section>
+
+      <div class="footer">
+        {{footer_text}}
+      </div>
+    </div>
+  </body>
+</html>
