@@ -50,3 +50,8 @@ These docs are design and operating documents.
 They define the desired normalized system, highlight current drift, and establish the contract future implementation should satisfy.
 
 They do not, by themselves, mean the system is already normalized.
+
+## Implementation Bridge
+
+- `implementation-plan-from-checkpoints.md`
+  - the ordered implementation plan that maps the normalization checkpoints onto the current repo, scripts, and highest-leverage code changes

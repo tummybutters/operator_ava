@@ -175,5 +175,6 @@ The first normalization checkpoint is documented under:
 - `docs/normalization/checkpoint-04-tenant-profile-schema.md`
 - `docs/normalization/checkpoint-05-provisioning-workflow.md`
 - `docs/normalization/checkpoint-06-ready-check-and-smoke-test.md`
+- `docs/normalization/implementation-plan-from-checkpoints.md`
 
 These docs define the intended canonical runtime layout before further golden preset work proceeds.
