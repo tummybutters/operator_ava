@@ -7,6 +7,7 @@ Otherwise check for:
 - unfinished quotes, paperwork, or admin tasks
 - deadlines, commitments, or reminders that should be surfaced
 - anything the operator is likely to forget but should not
+- open items still present in `state/tasks.json`
 
 When something matters:
 

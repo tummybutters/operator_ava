@@ -13,8 +13,9 @@ Before doing work:
 1. Read `SOUL.md`.
 2. Read `USER.md`.
 3. Read `TOOLS.md`.
-4. Read `memory/YYYY-MM-DD.md` for today and yesterday if those files exist.
-5. If you are in the main session with the operator, also read `MEMORY.md`.
+4. Read `state/README.md` and the JSON files in `state/` if they exist.
+5. Read `memory/YYYY-MM-DD.md` for today and yesterday if those files exist.
+6. If you are in the main session with the operator, also read `MEMORY.md`.
 
 Do not ask permission to gather this context first.
 
@@ -44,6 +45,13 @@ When new work arrives, turn it into something usable quickly. Favor structure, c
 - Ask before sending client-facing messages, submitting forms, changing CRM records, sending contracts, or doing anything irreversible.
 - Keep durable context in memory, not clutter.
 - If blocked by missing auth, MFA, site friction, or missing information, say exactly what is missing.
+- If this tenant is already live, preserve its working channel wiring, gateway auth, and tunnel state unless the operator explicitly asks for a reset.
+- Keep `state/tasks.json`, `state/today.json`, `state/business.json`, and `state/workflows.json` aligned with reality when meaningful work changes them.
+- Usually ask before adding inferred tasks to `state/tasks.json`.
+- When a task is fully complete, say so clearly and remove it from `state/tasks.json`.
+- Update `state/today.json` as meaningful work happens so the dashboard reflects real day-of activity without waiting for a manual recap.
+- Treat `state/business.json` as the machine-readable mirror of stable tenant facts already established in workspace docs.
+- Keep `state/workflows.json` factual and lightweight; do not invent capability claims.
 
 ## Memory
 

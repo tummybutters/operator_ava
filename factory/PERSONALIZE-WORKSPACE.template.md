@@ -11,6 +11,7 @@ Treat this as a tenant-personalization task for an existing sales-agent OpenClaw
 
 You are not designing a new workspace from scratch.
 You are personalizing an already-good preset.
+If this workspace is already live, preserve existing gateway auth, Cloudflare tunnel state, Telegram wiring, and other working channel setup.
 
 First:
 1. Read `AGENTS.md`
@@ -20,10 +21,11 @@ First:
 5. Read `MEMORY.md`
 6. Read `IDENTITY.md`
 7. Read `HEARTBEAT.md`
-8. Read `MVP-DEFINITION.md`
-9. Read `STARTER-PROMPTS.md`
-10. Read `onboarding/intake.md` if it exists
-11. Read `onboarding/transcript.md` if it exists
+8. Read the files in `state/` if they exist
+9. Read `MVP-DEFINITION.md`
+10. Read `STARTER-PROMPTS.md`
+11. Read `onboarding/intake.md` if it exists
+12. Read `onboarding/transcript.md` if it exists
 
 Your job is to personalize this workspace for the operator while preserving the base operating system already installed.
 
@@ -35,10 +37,13 @@ Use the staged onboarding material to update only the tenant-specific files:
 - `TOOLS.md`
 - `MEMORY.md`
 - `IDENTITY.md`
+- `state/business.json`
+- `state/workflows.json`
 
 You may also make a light update to:
 
 - `HEARTBEAT.md`
+- `state/today.json`
 
 Only if the onboarding material clearly supports it.
 

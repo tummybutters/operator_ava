@@ -1,6 +1,6 @@
 # Sandlers OpenClaw Preset
 
-This folder is the reusable starting point for a sales-agent OpenClaw instance.
+This repo is the reusable starting point for a sales-agent OpenClaw instance.
 
 It is intentionally smaller than a full live machine snapshot.
 
@@ -24,6 +24,7 @@ What does not belong here:
 ## Layout
 
 - `workspace/` - the reusable agent workspace
+- `workspace/state/` - machine-readable tenant state shared with the dashboard
 - `workspace/memory/` - daily notes directory for continuity
 - `workspace/STARTER-PROMPTS.md` - operator-facing setup prompt pack
 - `workspace/MVP-DEFINITION.md` - scope and product-shape reference
@@ -37,6 +38,19 @@ What does not belong here:
 - `scripts/run-openclaw.sh` - launches OpenClaw against the target state dir
 - `scripts/create-tenant-project.sh` - clones this preset into a new tenant project
 - `scripts/stage-personalization.sh` - stages intake/transcript files into a live workspace for AI-driven personalization
+
+## Shared State Layer
+
+The preset uses a small JSON state layer under `workspace/state/` for live dashboard symmetry:
+
+- `tasks.json`
+- `today.json`
+- `business.json`
+- `workflows.json`
+
+Use this state for UI-facing, machine-readable tenant data.
+
+Keep markdown files as the assistant-facing reasoning layer.
 
 ## Included Base Behaviors
 
@@ -73,7 +87,7 @@ The intended repeatable flow is:
 cd ../acme-broker
 ./scripts/bootstrap-sandbox.sh
 ./scripts/apply-preset.sh
-./scripts/stage-personalization.sh /sandbox/.openclaw-sandlers/workspace --intake /path/to/intake.md --transcript /path/to/transcript.md
+./scripts/stage-personalization.sh /sandbox/.openclaw/workspace --intake /path/to/intake.md --transcript /path/to/transcript.md
 ```
 
 Then, inside the cloud agent:
@@ -81,6 +95,12 @@ Then, inside the cloud agent:
 ```text
 Read onboarding/PERSONALIZE-WORKSPACE.md and execute it.
 ```
+
+## Live Deployment Note
+
+For an already-running tenant on NemoClaw/OpenClaw, apply this preset into the existing writable workspace/state instead of creating a brand-new state directory. That preserves working gateway auth, channel wiring, Cloudflare tunnel setup, Telegram bridge state, and any already-approved device state while upgrading the tenant workspace and toolchain.
+
+`scripts/apply-preset.sh` now auto-detects `/sandbox/.openclaw` when that live state exists and creates a backup before copying files in place.
 
 ## Fast Start
 

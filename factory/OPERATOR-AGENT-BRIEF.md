@@ -30,13 +30,20 @@ There are two different agents:
    - uses the preset as its operating system
    - finishes only in-workspace validation and live assistant behavior
 
+Current production assumption:
+
+- live tenant instances are running on Hetzner-hosted NemoClaw/OpenClaw environments
+- the shared dashboard connects through the runtime gateway using hash-provided `gateway` and `token`
+- live migrations should preserve working tunnel and channel state instead of resetting the whole instance
+
 ## Source Of Truth
 
 The source of truth is the golden preset in this repo:
 
-- `sandlers-openclaw-preset/`
+- repo root (`README.md`, `workspace/`, `factory/`, `scripts/`, `config/`)
 
 Do not treat the live `.openclaw` state directory on a random machine as the product source of truth.
+Do treat the live instance as the deployment target whose working gateway auth, Cloudflare tunnel, Telegram bridge, and approved device state must usually be preserved.
 
 ## What The Operator Agent Should Control
 
@@ -47,6 +54,7 @@ Do not treat the live `.openclaw` state directory on a random machine as the pro
 - instance provisioning and copy/deploy steps
 - base runtime installs
 - final handoff generation
+- safe preset upgrades for already-running tenant instances
 
 ## What The Operator Agent Should Not Hardcode
 
@@ -103,17 +111,25 @@ Optional installs:
 ## Core Factory Flow
 
 1. Create a tenant project from the preset.
-2. Apply the preset into a writable workspace/state dir.
+2. Apply the preset into the writable workspace/state dir.
 3. Stage onboarding material into `workspace/onboarding/`.
 4. Ask the tenant runtime agent to read `onboarding/PERSONALIZE-WORKSPACE.md` and execute it.
 5. Produce a human handoff checklist for secrets and auth.
 
+For live upgrades on an already-running tenant:
+
+1. back up the active workspace and config
+2. apply the preset into the active `.openclaw` state instead of a sidecar state dir
+3. preserve live tunnel and channel wiring
+4. reset the webchat session only if the running session is still carrying a stale pre-upgrade system prompt
+
 ## Key Scripts
 
-- `sandlers-openclaw-preset/scripts/create-tenant-project.sh`
-- `sandlers-openclaw-preset/scripts/bootstrap-sandbox.sh`
-- `sandlers-openclaw-preset/scripts/apply-preset.sh`
-- `sandlers-openclaw-preset/scripts/run-openclaw.sh`
+- `scripts/create-tenant-project.sh`
+- `scripts/bootstrap-sandbox.sh`
+- `scripts/apply-preset.sh`
+- `scripts/stage-personalization.sh`
+- `scripts/run-openclaw.sh`
 - `sandlers-openclaw-preset/scripts/stage-personalization.sh`
 
 ## Human Handoff Expectation

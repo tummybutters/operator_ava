@@ -6,7 +6,7 @@ Use this file when moving work to a different coding agent on another machine.
 
 Send the other agent:
 
-1. This repo or a copy of `sandlers-openclaw-preset/`
+1. This repo or a copy of the repo root
 2. The intake file
 3. The transcript file if available
 4. The target instance details
@@ -14,12 +14,12 @@ Send the other agent:
 
 ## What The New Agent Should Read First
 
-1. `sandlers-openclaw-preset/README.md`
-2. `sandlers-openclaw-preset/factory/README.md`
-3. `sandlers-openclaw-preset/factory/OPERATOR-AGENT-BRIEF.md`
-4. `sandlers-openclaw-preset/factory/PERSONALIZE-WORKSPACE.template.md`
-5. `sandlers-openclaw-preset/workspace/AGENTS.md`
-6. `sandlers-openclaw-preset/workspace/TOOLS.md`
+1. `README.md`
+2. `factory/README.md`
+3. `factory/OPERATOR-AGENT-BRIEF.md`
+4. `factory/PERSONALIZE-WORKSPACE.template.md`
+5. `workspace/AGENTS.md`
+6. `workspace/TOOLS.md`
 
 ## Copy-Paste Prompt
 
@@ -27,12 +27,12 @@ Send the other agent:
 You are taking over the backend operator role for a sales-agent OpenClaw factory flow.
 
 Read these files first:
-- sandlers-openclaw-preset/README.md
-- sandlers-openclaw-preset/factory/README.md
-- sandlers-openclaw-preset/factory/OPERATOR-AGENT-BRIEF.md
-- sandlers-openclaw-preset/factory/PERSONALIZE-WORKSPACE.template.md
-- sandlers-openclaw-preset/workspace/AGENTS.md
-- sandlers-openclaw-preset/workspace/TOOLS.md
+- README.md
+- factory/README.md
+- factory/OPERATOR-AGENT-BRIEF.md
+- factory/PERSONALIZE-WORKSPACE.template.md
+- workspace/AGENTS.md
+- workspace/TOOLS.md
 
 Your job is to use the golden preset to prepare a tenant NemoClaw/OpenClaw instance so the human only needs to finish secrets and auth steps.
 
@@ -56,6 +56,6 @@ Expected output:
 - confirm the new machine has repo access
 - confirm the new agent has terminal access
 - confirm the new agent has GitHub access if it needs to push
-- confirm the new agent has Brev or remote-instance access if it needs to deploy
+- confirm the new agent has Hetzner or equivalent remote-instance access if it needs to deploy
 - confirm intake and transcript files are present
 - confirm any secrets remain out of git
