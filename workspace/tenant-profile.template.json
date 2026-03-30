@@ -1,85 +1,70 @@
 {
-  "tenant_id": "{{tenant_id}}",
-  "display_name": "{{assistant_display_name}}",
-  "operator": {
-    "name": "{{principal_name}}",
-    "business_name": "{{business_name}}",
-    "timezone": "{{timezone}}",
+  "schemaVersion": 1,
+  "deploymentMode": "fresh",
+  "timezone": "America/Los_Angeles",
+  "contact": {
+    "fullName": "{{full_name}}",
+    "businessName": "{{business_name}}",
+    "email": "{{email}}",
+    "phone": "{{phone}}",
+    "legalConsent": "{{legal_consent}}"
+  },
+  "classification": {
+    "operatorType": "{{operator_type}}",
+    "businessStructure": "{{business_structure}}",
     "territory": "{{territory}}"
   },
-  "communication": {
-    "tone": "{{tone}}",
-    "verbosity": "{{verbosity}}",
-    "primary_channel": "{{primary_channel}}",
-    "acknowledgement_enabled": true,
-    "long_task_updates_enabled": true
+  "salesProfile": {
+    "serviceMix": [
+      "{{service_mix_1}}",
+      "{{service_mix_2}}"
+    ],
+    "biggestWeeklyWorkload": "{{biggest_weekly_workload}}",
+    "activeOpportunityRange": "{{active_opportunity_range}}",
+    "weeklyQuoteVolume": "{{weekly_quote_volume}}",
+    "monthlyRepeatingTasks": [
+      "{{monthly_repeating_task_1}}",
+      "{{monthly_repeating_task_2}}"
+    ],
+    "newOpportunityFirstAction": "{{new_opportunity_first_action}}",
+    "stallPoints": [
+      "{{stall_point_1}}",
+      "{{stall_point_2}}"
+    ],
+    "quoteDelayCauses": [
+      "{{quote_delay_cause_1}}",
+      "{{quote_delay_cause_2}}"
+    ],
+    "multiVendorComplexity": "{{multi_vendor_complexity}}"
   },
-  "workflow_priorities": {
-    "primary_mix": [
-      "{{workflow_1}}",
-      "{{workflow_2}}"
+  "systemsProfile": {
+    "systemsInUse": [
+      "{{system_in_use_1}}",
+      "{{system_in_use_2}}"
     ],
-    "assistant_owns_first": [
-      "{{ownership_1}}",
-      "{{ownership_2}}"
+    "mandatorySystems": [
+      "{{mandatory_system_1}}",
+      "{{mandatory_system_2}}"
     ],
-    "biggest_friction": [
-      "{{friction_1}}",
-      "{{friction_2}}"
+    "accountsToPrepareFirst": [
+      "{{account_to_prepare_1}}",
+      "{{account_to_prepare_2}}"
+    ],
+    "browserPortalReliance": "{{browser_portal_reliance}}",
+    "fileStorage": "{{file_storage}}",
+    "noteHabits": "{{note_habits}}",
+    "folderOrganization": "{{folder_organization}}"
+  },
+  "operationsProfile": {
+    "quotePriority": "{{quote_priority}}",
+    "paperworkBehavior": "{{paperwork_behavior}}",
+    "commissionTracking": "{{commission_tracking}}",
+    "immediateValueGoal": "{{immediate_value_goal}}"
+  },
+  "approvalProfile": {
+    "approvalBoundaries": [
+      "{{approval_boundary_1}}",
+      "{{approval_boundary_2}}"
     ]
-  },
-  "systems": {
-    "messaging": "{{primary_channel}}",
-    "email": "{{email_layer}}",
-    "google_workspace": "{{google_workspace_usage}}",
-    "crm": "{{crm}}",
-    "storage": "{{storage_system}}",
-    "portal_tools": [
-      "{{portal_1}}",
-      "{{portal_2}}"
-    ],
-    "document_tools": [
-      "{{document_tool_1}}"
-    ],
-    "artifact_tools": [
-      "{{artifact_tool_1}}",
-      "{{artifact_tool_2}}"
-    ]
-  },
-  "automation": {
-    "heartbeat_enabled": true,
-    "morning_brief_enabled": true,
-    "end_of_day_summary_enabled": true,
-    "stale_follow_up_review_enabled": true,
-    "long_task_updates_enabled": true
-  },
-  "workflow_defaults": {
-    "quote_factory_enabled": true,
-    "spreadsheet_ops_enabled": true,
-    "data_compare_reporting_enabled": true,
-    "delivery_packaging_enabled": true,
-    "document_assembly_enabled": true
-  },
-  "behavior_defaults": {
-    "default_to_drafts": true,
-    "default_to_structured_briefs": true,
-    "default_to_follow_up_help": true,
-    "default_to_admin_organization": true,
-    "proactivity_level": "{{proactivity_level}}"
-  },
-  "approval_boundaries": {
-    "client_facing_sends_require_approval": true,
-    "crm_writes_require_approval": true,
-    "portal_submissions_require_approval": true,
-    "contract_actions_require_approval": true
-  },
-  "secret_references": {
-    "messaging_secret": "{{channel_secret_ref}}",
-    "email_secret": "{{email_secret_ref}}",
-    "crm_secret": "{{crm_secret_ref}}",
-    "portal_secrets": [
-      "{{portal_secret_ref_1}}"
-    ],
-    "document_tool_secret": "{{document_tool_secret_ref}}"
   }
 }

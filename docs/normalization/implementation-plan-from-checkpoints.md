@@ -81,7 +81,7 @@ Status:
 - `/sandbox/.openclaw-sandlers` is now documented as deprecated and migration-only
 - runtime/apply scripts now log the resolved canonical paths when they run
 
-## 2. Tenant profile implementation is still older than the schema
+## 2. Tenant profile implementation was older than the schema
 
 Observed in:
 
@@ -89,16 +89,24 @@ Observed in:
 - `scripts/stage-personalization.sh`
 - `factory/PERSONALIZE-WORKSPACE.template.md`
 
-Examples:
+This was previously visible in:
 
-- the current template uses older fields like `display_name`, `primary_channel`, `email_layer`, and loose placeholder refs
-- it does not reflect the checkpoint 4 schema sections
-- it still reads more like a handcrafted personalization input than a canonical onboarding profile
+- the template using older fields like `display_name`, `primary_channel`, `email_layer`, and loose placeholder refs
+- the template not reflecting the checkpoint 4 schema sections
+- the template reading more like a handcrafted personalization input than a canonical onboarding profile
 
-Why this matters:
+Why this mattered:
 
 - checkpoint 4 is now the onboarding contract
-- if the repo still personalizes from the old template, onboarding will drift immediately
+- if the repo personalizes from the old template, onboarding drifts immediately
+
+Status:
+
+- phase 2 tenant-profile normalization has now been applied in the repo
+- `workspace/tenant-profile.template.json` now matches the checkpoint 4 structure
+- `deploymentMode` is fixed to `fresh`
+- timezone now defaults to `America/Los_Angeles`
+- the old personalization-era fields have been removed from the template
 
 ## 3. Personalization is still prompt-heavy rather than deterministic
 
@@ -400,8 +408,8 @@ The deploy succeeds without needing path forensics, temp-workspace debugging, or
 
 ## Immediate Next Move
 
-Now that phase 1 is in place, the next implementation ticket should be:
+Now that phases 1 and 2 are in place, the next implementation ticket should be:
 
-`Replace the old tenant profile template with the normalized checkpoint 4 schema.`
+`Make personalization profile-driven instead of mostly prompt-driven.`
 
-That is the next highest-leverage change because it moves onboarding onto the actual normalized profile contract before deeper personalization and ready-check automation work.
+That is the next highest-leverage change because the schema is now in place, but the staging and personalization flow still rely too much on raw intake and prompt-only transformation.
