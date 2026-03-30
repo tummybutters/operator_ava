@@ -170,5 +170,6 @@ The first normalization checkpoint is documented under:
 
 - `docs/normalization/README.md`
 - `docs/normalization/checkpoint-01-canonical-runtime-layout.md`
+- `docs/normalization/checkpoint-02-golden-server-preset.md`
 
 These docs define the intended canonical runtime layout before further golden preset work proceeds.

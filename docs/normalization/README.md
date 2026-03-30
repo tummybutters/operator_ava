@@ -30,6 +30,8 @@ Checkpoint 1 is therefore the foundation for the entire factory.
 
 - `checkpoint-01-canonical-runtime-layout.md`
   - the detailed spec for the first normalization checkpoint
+- `checkpoint-02-golden-server-preset.md`
+  - the server and runtime baseline spec for fresh tenant machines
 
 ## Document Status
 
