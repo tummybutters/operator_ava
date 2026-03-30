@@ -23,6 +23,7 @@ What does not belong here:
 
 ## Layout
 
+- `docs/normalization/` - architecture specs and normalization checkpoints
 - `workspace/` - the reusable agent workspace
 - `workspace/state/` - machine-readable tenant state shared with the dashboard
 - `workspace/memory/` - daily notes directory for continuity
@@ -162,3 +163,12 @@ By default this creates and uses:
 - workspace: `/sandbox/.openclaw-sandlers/workspace`
 
 Nothing in this preset writes secrets for you. Onboarding should fill in tenant specifics later.
+
+## Normalization Docs
+
+The first normalization checkpoint is documented under:
+
+- `docs/normalization/README.md`
+- `docs/normalization/checkpoint-01-canonical-runtime-layout.md`
+
+These docs define the intended canonical runtime layout before further golden preset work proceeds.
