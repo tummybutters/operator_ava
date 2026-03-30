@@ -176,5 +176,6 @@ The first normalization checkpoint is documented under:
 - `docs/normalization/checkpoint-05-provisioning-workflow.md`
 - `docs/normalization/checkpoint-06-ready-check-and-smoke-test.md`
 - `docs/normalization/implementation-plan-from-checkpoints.md`
+- `docs/normalization/fresh-hetzner-box-ava-e2e-runbook.md`
 
 These docs define the intended canonical runtime layout before further golden preset work proceeds.

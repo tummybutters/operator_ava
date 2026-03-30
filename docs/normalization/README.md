@@ -55,3 +55,5 @@ They do not, by themselves, mean the system is already normalized.
 
 - `implementation-plan-from-checkpoints.md`
   - the ordered implementation plan that maps the normalization checkpoints onto the current repo, scripts, and highest-leverage code changes
+- `fresh-hetzner-box-ava-e2e-runbook.md`
+  - the execution runbook for the first clean-slate factory test on a brand-new Hetzner server
