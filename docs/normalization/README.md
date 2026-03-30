@@ -40,6 +40,8 @@ Checkpoint 1 is therefore the foundation for the entire factory.
   - the matching example JSON shape for a fresh tenant onboarding profile
 - `checkpoint-05-provisioning-workflow.md`
   - the canonical fresh-deploy path from intake to a live dashboard handoff
+- `checkpoint-06-ready-check-and-smoke-test.md`
+  - the canonical ready/not-ready gate for a fresh tenant after provisioning
 
 ## Document Status
 
