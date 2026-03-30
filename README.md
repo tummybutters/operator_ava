@@ -38,7 +38,7 @@ What does not belong here:
 - `scripts/apply-preset.sh` - copies this preset into a target state/workspace
 - `scripts/run-openclaw.sh` - launches OpenClaw against the target state dir
 - `scripts/create-tenant-project.sh` - clones this preset into a new tenant project
-- `scripts/stage-personalization.sh` - stages intake/transcript files into a live workspace for AI-driven personalization
+- `scripts/stage-personalization.sh` - stages the normalized tenant profile plus supporting onboarding files into a live workspace for AI-driven personalization
 
 ## Shared State Layer
 
@@ -88,7 +88,7 @@ The intended repeatable flow is:
 cd ../acme-broker
 ./scripts/bootstrap-sandbox.sh
 ./scripts/apply-preset.sh
-./scripts/stage-personalization.sh /sandbox/.openclaw/workspace --intake /path/to/intake.md --transcript /path/to/transcript.md
+./scripts/stage-personalization.sh /sandbox/.openclaw/workspace --profile /path/to/tenant-profile.json --intake /path/to/intake.md --transcript /path/to/transcript.md
 ```
 
 Then, inside the cloud agent:
@@ -169,6 +169,8 @@ By default this creates and uses:
 - runtime-owned data root: `/sandbox/.openclaw-data`
 
 Nothing in this preset writes secrets for you. Onboarding should fill in tenant specifics later.
+
+`scripts/stage-personalization.sh` now requires the normalized tenant profile JSON and treats raw intake/transcript as supporting inputs rather than the primary source of truth.
 
 ## Normalization Docs
 

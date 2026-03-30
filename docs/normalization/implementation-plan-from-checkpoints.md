@@ -108,7 +108,7 @@ Status:
 - timezone now defaults to `America/Los_Angeles`
 - the old personalization-era fields have been removed from the template
 
-## 3. Personalization is still prompt-heavy rather than deterministic
+## 3. Personalization is still more prompt-heavy than fully deterministic
 
 Observed in:
 
@@ -117,14 +117,23 @@ Observed in:
 
 Current shape:
 
-- stage intake and transcript
+- stage the normalized tenant profile plus optional intake/transcript support files
 - ask the cloud agent to read a personalization prompt and execute it
 
 Why this matters:
 
-- this is useful, but it is still more freeform than the normalized path
+- this is much better than raw-intake-only staging, but it is still more freeform than the fully normalized end state
 - checkpoints 4 and 5 want personalization to be driven from one normalized tenant profile
-- freeform personalization increases variability between tenants
+- freeform personalization still increases variability between tenants
+
+Status:
+
+- phase 3 profile-first staging and prompting has now been applied in the repo
+- `scripts/stage-personalization.sh` now requires `--profile` and validates the normalized tenant profile JSON
+- the script now stages `onboarding/tenant-profile.json` as the required primary input
+- `factory/PERSONALIZE-WORKSPACE.template.md` now treats the normalized profile as primary and intake/transcript as secondary supporting material
+- expected personalization outputs are now called out explicitly in the prompt template
+- a deterministic renderer step is still recommended later if onboarding variability remains too high
 
 ## 4. Ready-check is documented but not automated
 
@@ -408,8 +417,8 @@ The deploy succeeds without needing path forensics, temp-workspace debugging, or
 
 ## Immediate Next Move
 
-Now that phases 1 and 2 are in place, the next implementation ticket should be:
+Now that phases 1 through 3 are in place, the next implementation ticket should be:
 
-`Make personalization profile-driven instead of mostly prompt-driven.`
+`Turn the shared state layer into a factory-owned contract.`
 
-That is the next highest-leverage change because the schema is now in place, but the staging and personalization flow still rely too much on raw intake and prompt-only transformation.
+That is the next highest-leverage change because onboarding now flows through the normalized profile, but the factory still needs to guarantee the initial dashboard-facing state end to end.

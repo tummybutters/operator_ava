@@ -2,12 +2,17 @@
 
 This template is for factory orchestration, not for the end operator.
 
-It assumes the intake and transcript files have already been staged into `workspace/onboarding/`.
+It assumes the normalized tenant profile has already been staged into `workspace/onboarding/`.
+
+Optional supporting artifacts may also be staged there:
+
+- raw intake
+- transcript
 
 ## Prompt
 
 ```text
-Treat this as a tenant-personalization task for an existing sales-agent OpenClaw workspace.
+Treat this as a tenant-personalization task for a normalized sales-agent OpenClaw workspace.
 
 You are not designing a new workspace from scratch.
 You are personalizing an already-good preset.
@@ -24,14 +29,23 @@ First:
 8. Read the files in `state/` if they exist
 9. Read `MVP-DEFINITION.md`
 10. Read `STARTER-PROMPTS.md`
-11. Read `onboarding/intake.md` if it exists
-12. Read `onboarding/transcript.md` if it exists
+11. Read `onboarding/tenant-profile.json` if it exists
+12. Read `onboarding/intake.md` if it exists
+13. Read `onboarding/transcript.md` if it exists
 
 Your job is to personalize this workspace for the operator while preserving the base operating system already installed.
 
 ## What you should do
 
-Use the staged onboarding material to update only the tenant-specific files:
+Use the normalized tenant profile as the primary source of truth.
+
+Use raw intake and transcript only as supporting material to:
+
+- clarify missing wording
+- infer durable style preferences
+- fill obvious gaps when the profile is incomplete
+
+Update only the tenant-specific files:
 
 - `USER.md`
 - `TOOLS.md`
@@ -45,7 +59,9 @@ You may also make a light update to:
 - `HEARTBEAT.md`
 - `state/today.json`
 
-Only if the onboarding material clearly supports it.
+Only if the normalized profile or clearly supporting onboarding material justifies it.
+
+Do not create live tasks in `state/tasks.json` unless onboarding itself produced explicitly approved tasks.
 
 ## What you should not change unless truly necessary
 
@@ -68,14 +84,21 @@ Keep the core workflow grooves intact:
 
 ## Personalization rules
 
-- Intake is the primary source of truth.
-- Transcript can fill gaps, clarify style, and infer stable preferences.
+- `onboarding/tenant-profile.json` is the primary source of truth.
+- Intake is secondary supporting material.
+- Transcript is tertiary supporting material.
+- Do not override explicit profile fields with weaker hints from intake or transcript.
 - Do not invent secrets, passwords, MFA codes, tokens, or API keys.
 - Do not hardcode browser state, auth state, or live credentials into workspace files.
 - Do not overfit to one temporary conversation detail if it does not seem durable.
 - Keep the operator-facing files concise and usable.
 - Preserve approval boundaries.
 - Preserve the default posture of drafting before acting.
+- Preserve the shared state contract for:
+  - `state/business.json`
+  - `state/workflows.json`
+  - `state/today.json`
+  - `state/tasks.json`
 
 ## Missing information handling
 
@@ -100,6 +123,8 @@ When done:
    - `TOOLS.md`
    - `MEMORY.md`
    - `IDENTITY.md`
-3. If you changed `HEARTBEAT.md`, show that too.
+   - `state/business.json`
+   - `state/workflows.json`
+3. If you changed `HEARTBEAT.md` or `state/today.json`, show those too.
 4. Briefly list any still-missing onboarding items as setup gaps, not as failures.
 ```

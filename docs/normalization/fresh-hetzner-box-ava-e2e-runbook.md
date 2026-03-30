@@ -245,13 +245,13 @@ Goal:
 Primary command shape:
 
 ```bash
-./scripts/stage-personalization.sh /sandbox/.openclaw/workspace --intake /path/to/intake.md --transcript /path/to/transcript.md
+./scripts/stage-personalization.sh /sandbox/.openclaw/workspace --profile /path/to/tenant-profile.json --intake /path/to/intake.md --transcript /path/to/transcript.md
 ```
 
 Preferred next-state direction:
 
 - stage the normalized tenant profile explicitly
-- do not rely forever on raw intake plus freeform prompt interpretation
+- use raw intake and transcript as supporting material only
 
 Output:
 
