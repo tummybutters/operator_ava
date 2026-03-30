@@ -38,6 +38,8 @@ Checkpoint 1 is therefore the foundation for the entire factory.
   - the canonical onboarding profile derived from intake answers for fresh deploys
 - `checkpoint-04-tenant-profile-example.json`
   - the matching example JSON shape for a fresh tenant onboarding profile
+- `checkpoint-05-provisioning-workflow.md`
+  - the canonical fresh-deploy path from intake to a live dashboard handoff
 
 ## Document Status
 
