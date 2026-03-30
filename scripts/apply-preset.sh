@@ -3,13 +3,12 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PRESET_ROOT="$(cd "${SCRIPT_DIR}/.." && pwd)"
+CANONICAL_STATE_DIR="/sandbox/.openclaw"
+RUNTIME_DATA_ROOT="/sandbox/.openclaw-data"
+DEPRECATED_STATE_DIR="/sandbox/.openclaw-sandlers"
 
 default_state_dir() {
-  if [ -f /sandbox/.openclaw/openclaw.json ]; then
-    printf '%s\n' /sandbox/.openclaw
-  else
-    printf '%s\n' /sandbox/.openclaw-sandlers
-  fi
+  printf '%s\n' "${CANONICAL_STATE_DIR}"
 }
 
 STATE_DIR="${1:-$(default_state_dir)}"
@@ -17,6 +16,16 @@ WORKSPACE_DIR="${2:-${STATE_DIR}/workspace}"
 CONFIG_PATH="${STATE_DIR}/openclaw.json"
 BACKUP_ROOT="${STATE_DIR}/backups"
 STAMP="$(date +%Y%m%d-%H%M%S)"
+
+if [ "${STATE_DIR}" = "${DEPRECATED_STATE_DIR}" ]; then
+  echo "Warning: ${DEPRECATED_STATE_DIR} is deprecated and should only be used for migration or repair flows." >&2
+fi
+
+echo "Resolved preset targets:"
+echo "  Canonical state dir: ${STATE_DIR}"
+echo "  Canonical workspace: ${WORKSPACE_DIR}"
+echo "  Canonical config: ${CONFIG_PATH}"
+echo "  Runtime-owned data root: ${RUNTIME_DATA_ROOT}"
 
 mkdir -p "${STATE_DIR}" "${WORKSPACE_DIR}"
 
@@ -55,6 +64,7 @@ echo "Preset applied."
 echo "State dir: ${STATE_DIR}"
 echo "Workspace: ${WORKSPACE_DIR}"
 echo "Config: ${CONFIG_PATH}"
+echo "Runtime data root: ${RUNTIME_DATA_ROOT}"
 if [ -n "${BACKUP_DIR:-}" ]; then
   echo "Backup: ${BACKUP_DIR}"
 fi

@@ -55,7 +55,7 @@ Some code paths and defaults still reflect the older, looser model rather than t
 
 ## The Most Important Current Drift
 
-## 1. Runtime path defaults are not fully normalized yet
+## 1. Runtime path defaults were the highest-priority drift
 
 Observed in:
 
@@ -63,16 +63,23 @@ Observed in:
 - `scripts/apply-preset.sh`
 - `README.md`
 
-Examples:
+This was previously visible in:
 
-- `run-openclaw.sh` still defaults to `/sandbox/.openclaw-sandlers`
-- `apply-preset.sh` uses a fallback model where `/sandbox/.openclaw-sandlers` is still a normal default
-- the repo README still documents `/sandbox/.openclaw-sandlers` as the default created state
+- `run-openclaw.sh` defaulting to `/sandbox/.openclaw-sandlers`
+- `apply-preset.sh` treating `/sandbox/.openclaw-sandlers` as a normal fallback default
+- the repo README documenting `/sandbox/.openclaw-sandlers` as the default created state
 
-Why this matters:
+Why this mattered:
 
 - checkpoint 1 says the canonical tenant root is `/sandbox/.openclaw`
-- if scripts still normalize around a side path, future deploys can still land in non-canonical locations
+- if scripts normalize around a side path, future deploys can still land in non-canonical locations
+
+Status:
+
+- phase 1 runtime path normalization has now been applied in the repo
+- fresh defaults now point to `/sandbox/.openclaw`
+- `/sandbox/.openclaw-sandlers` is now documented as deprecated and migration-only
+- runtime/apply scripts now log the resolved canonical paths when they run
 
 ## 2. Tenant profile implementation is still older than the schema
 
@@ -393,8 +400,8 @@ The deploy succeeds without needing path forensics, temp-workspace debugging, or
 
 ## Immediate Next Move
 
-The first implementation ticket should be:
+Now that phase 1 is in place, the next implementation ticket should be:
 
-`Normalize runtime path defaults in the actual scripts and docs.`
+`Replace the old tenant profile template with the normalized checkpoint 4 schema.`
 
-That is the narrowest, highest-leverage change because it removes the deepest source of drift before touching onboarding, personalization, or dashboard behavior.
+That is the next highest-leverage change because it moves onboarding onto the actual normalized profile contract before deeper personalization and ready-check automation work.

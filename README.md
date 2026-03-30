@@ -103,6 +103,10 @@ For an already-running tenant on NemoClaw/OpenClaw, apply this preset into the e
 
 `scripts/apply-preset.sh` now auto-detects `/sandbox/.openclaw` when that live state exists and creates a backup before copying files in place.
 
+Fresh deploys should treat `/sandbox/.openclaw` as the canonical tenant root.
+
+`/sandbox/.openclaw-sandlers` is now deprecated and should only be referenced for migration or repair flows.
+
 ## Fast Start
 
 From inside a writable sandbox:
@@ -159,8 +163,10 @@ INSTALL_BLENDER=1 ./scripts/bootstrap-sandbox.sh
 
 By default this creates and uses:
 
-- state dir: `/sandbox/.openclaw-sandlers`
-- workspace: `/sandbox/.openclaw-sandlers/workspace`
+- state dir: `/sandbox/.openclaw`
+- workspace: `/sandbox/.openclaw/workspace`
+- config: `/sandbox/.openclaw/openclaw.json`
+- runtime-owned data root: `/sandbox/.openclaw-data`
 
 Nothing in this preset writes secrets for you. Onboarding should fill in tenant specifics later.
 
