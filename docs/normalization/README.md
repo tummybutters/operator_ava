@@ -32,6 +32,8 @@ Checkpoint 1 is therefore the foundation for the entire factory.
   - the detailed spec for the first normalization checkpoint
 - `checkpoint-02-golden-server-preset.md`
   - the server and runtime baseline spec for fresh tenant machines
+- `checkpoint-03-golden-workspace-preset.md`
+  - the canonical workspace contents and behavior spec for every tenant
 
 ## Document Status
 
