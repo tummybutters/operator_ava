@@ -34,6 +34,10 @@ Checkpoint 1 is therefore the foundation for the entire factory.
   - the server and runtime baseline spec for fresh tenant machines
 - `checkpoint-03-golden-workspace-preset.md`
   - the canonical workspace contents and behavior spec for every tenant
+- `checkpoint-04-tenant-profile-schema.md`
+  - the canonical onboarding profile derived from intake answers for fresh deploys
+- `checkpoint-04-tenant-profile-example.json`
+  - the matching example JSON shape for a fresh tenant onboarding profile
 
 ## Document Status
 

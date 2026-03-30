@@ -172,5 +172,6 @@ The first normalization checkpoint is documented under:
 - `docs/normalization/checkpoint-01-canonical-runtime-layout.md`
 - `docs/normalization/checkpoint-02-golden-server-preset.md`
 - `docs/normalization/checkpoint-03-golden-workspace-preset.md`
+- `docs/normalization/checkpoint-04-tenant-profile-schema.md`
 
 These docs define the intended canonical runtime layout before further golden preset work proceeds.

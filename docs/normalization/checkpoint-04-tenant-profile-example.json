@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "deploymentMode": "fresh",
+  "timezone": "America/Los_Angeles",
+  "contact": {
+    "fullName": "",
+    "businessName": "",
+    "email": "",
+    "phone": "",
+    "legalConsent": false
+  },
+  "classification": {
+    "operatorType": "",
+    "businessStructure": "",
+    "territory": ""
+  },
+  "salesProfile": {
+    "serviceMix": [],
+    "biggestWeeklyWorkload": "",
+    "activeOpportunityRange": "",
+    "weeklyQuoteVolume": "",
+    "monthlyRepeatingTasks": [],
+    "newOpportunityFirstAction": "",
+    "stallPoints": [],
+    "quoteDelayCauses": [],
+    "multiVendorComplexity": ""
+  },
+  "systemsProfile": {
+    "systemsInUse": [],
+    "mandatorySystems": [],
+    "accountsToPrepareFirst": [],
+    "browserPortalReliance": "",
+    "fileStorage": "",
+    "noteHabits": "",
+    "folderOrganization": ""
+  },
+  "operationsProfile": {
+    "quotePriority": "",
+    "paperworkBehavior": "",
+    "commissionTracking": "",
+    "immediateValueGoal": ""
+  },
+  "approvalProfile": {
+    "approvalBoundaries": []
+  }
+}
