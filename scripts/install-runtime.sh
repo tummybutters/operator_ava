@@ -82,7 +82,7 @@ install_cloudflared() {
 
   echo "Installing cloudflared ..."
   curl -fsSL https://pkg.cloudflare.com/cloudflare-main.gpg \
-    | gpg --dearmor -o /usr/share/keyrings/cloudflare-main.gpg
+    | gpg --dearmor --batch --yes -o /usr/share/keyrings/cloudflare-main.gpg
   echo "deb [signed-by=/usr/share/keyrings/cloudflare-main.gpg] https://pkg.cloudflare.com/cloudflared $(lsb_release -cs) main" \
     > /etc/apt/sources.list.d/cloudflared.list
   apt_get_retry apt-get update -y >/dev/null
