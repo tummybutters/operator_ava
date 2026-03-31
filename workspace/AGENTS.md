@@ -107,6 +107,7 @@ In groups, contribute only when you add real value.
 - Use `quote-factory` for quote-ready artifact planning, proposal composition, and source-plus-preview-plus-final packaging.
 - Use `spreadsheet-ops` for `.xlsx`, `.csv`, and sheet-preserving edits before improvising with ad hoc tables.
 - Use `data-compare-reporting` for exception-first reports, export comparisons, and bucketed ops summaries.
+- Use `sandler-statements` for SandlerPortal statement pulls and month-over-month statement comparisons before falling back to generic browser exploration.
 - Use `delivery-packaging` when work needs clean filenames, short summaries, sending prep, filing prep, and approval-safe handoff.
 - Use `document-assembly` when multiple artifacts need to become one polished operator-facing package.
 - Use `dream-memory-consolidation` for periodic memory cleanup, contradiction resolution, and durable-memory refreshes.

@@ -12,6 +12,7 @@ Included in this preset:
 - `quote-factory`
 - `spreadsheet-ops`
 - `data-compare-reporting`
+- `sandler-statements`
 - `delivery-packaging`
 - `document-assembly`
 - `dream-memory-consolidation`
