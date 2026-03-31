@@ -1,6 +1,6 @@
 ---
 name: agentmail
-description: Send and receive email through the AgentMail API using AGENTMAIL_API_KEY.
+description: Send and receive email through AgentMail using AGENTMAIL_API_KEY and the local agentmail-cli helper.
 requires:
   env:
     - AGENTMAIL_API_KEY
@@ -13,6 +13,8 @@ This is a lightweight default capability wrapper for email work through AgentMai
 If the tenant later has a specific inbox workflow or message format, adapt to that instead of forcing these defaults.
 
 Use AgentMail when email support is needed and `AGENTMAIL_API_KEY` is present.
+
+Prefer `agentmail-cli` over handwritten curl unless you need an operation the helper does not expose yet.
 
 Base URL:
 
@@ -27,6 +29,44 @@ Authorization: Bearer $AGENTMAIL_API_KEY
 ```
 
 Common operations:
+
+## Status
+
+```bash
+agentmail-cli status
+```
+
+## List inboxes
+
+```bash
+agentmail-cli list-inboxes
+```
+
+## Create an inbox
+
+```bash
+agentmail-cli create-inbox "Sales Assistant"
+```
+
+## List messages
+
+```bash
+agentmail-cli list-messages
+```
+
+## Send an email
+
+```bash
+agentmail-cli send recipient@example.com "Hello from the sales assistant" "This email was prepared by the sales assistant."
+```
+
+## Reply to a message
+
+```bash
+agentmail-cli reply MESSAGE_ID "Thanks for your email."
+```
+
+Raw API examples:
 
 ## List inboxes
 
@@ -72,5 +112,10 @@ curl -s -X POST -H "Authorization: Bearer $AGENTMAIL_API_KEY" \
   -d '{"text":"Thanks for your email."}' \
   https://api.agentmail.to/v0/inboxes/{inbox_id}/messages/{message_id}/reply
 ```
+
+Required env:
+
+- `AGENTMAIL_API_KEY`
+- `AGENTMAIL_INBOX_ID` when a default inbox is already known
 
 Never store the API key in workspace files. Keep it in the runtime environment or OpenClaw skill config.

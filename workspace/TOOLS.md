@@ -56,6 +56,7 @@ Store references, labels, expectations, and setup notes only.
 ## CLI Stack
 
 - `openclaw`
+- `agentmail-cli`
 - `playwright-cli`
 - `gws`
 - `twilio`

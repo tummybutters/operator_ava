@@ -23,6 +23,23 @@ Requirements:
 Then ask me the smallest set of setup questions needed to personalize the workspace.
 ```
 
+## Bootstrap Wizard
+
+```text
+Run a practical onboarding wizard for this workspace.
+
+Start with useful setup offers, in this order:
+- ask if you should pull the latest SandlerPortal statement now so future months can be compared automatically
+- ask if you should connect SCOUT for address and quote lookups
+- ask if you should set up the email path now so AgentMail can be wired once the key and inbox info are provided
+- ask for the operator's most-used quote templates, contracts, forms, PDFs, spreadsheets, screenshots, or phone photos so they can be saved into a reusable library
+
+Only after those offers, ask the minimum profile questions needed to personalize the workspace.
+
+Do not turn setup into a personality survey.
+Do not ask for secrets until a concrete setup step is accepted.
+```
+
 ## Tenant Profile
 
 ```text
