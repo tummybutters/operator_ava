@@ -196,6 +196,22 @@ For OpenRouter specifically, the cleanest first-boot path is:
 - seed `env.OPENROUTER_API_KEY`
 - set the tenant default model to the chosen `openrouter/...` model
 
+## Re-Apply Regression Found And Fixed
+
+After the OpenRouter auth/model step was added, a later preset re-apply exposed another factory defect:
+
+- `scripts/apply-preset.sh` copied the entire preset workspace back over the live workspace
+- that reverted tenant-specific files like `USER.md`, `IDENTITY.md`, and `state/business.json` to raw template placeholders
+
+The first backup taken during the run preserved the good personalized state.
+
+The fix is now in the canonical source:
+
+- on re-apply, preserve tenant-specific files and state instead of overwriting them
+- continue copying the base preset only for shared/base workspace assets
+
+This keeps later config/model seed passes from silently erasing tenant personalization.
+
 ## Implication For One-Click Deploy
 
 The path is much closer than before.

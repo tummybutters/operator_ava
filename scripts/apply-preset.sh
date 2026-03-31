@@ -16,6 +16,7 @@ WORKSPACE_DIR="${2:-${STATE_DIR}/workspace}"
 CONFIG_PATH="${STATE_DIR}/openclaw.json"
 BACKUP_ROOT="${STATE_DIR}/backups"
 STAMP="$(date +%Y%m%d-%H%M%S)"
+WORKSPACE_ALREADY_EXISTS=0
 
 if [ "${STATE_DIR}" = "${DEPRECATED_STATE_DIR}" ]; then
   echo "Warning: ${DEPRECATED_STATE_DIR} is deprecated and should only be used for migration or repair flows." >&2
@@ -30,6 +31,7 @@ echo "  Runtime-owned data root: ${RUNTIME_DATA_ROOT}"
 mkdir -p "${STATE_DIR}" "${WORKSPACE_DIR}"
 
 if [ -d "${WORKSPACE_DIR}" ] && [ "$(ls -A "${WORKSPACE_DIR}" 2>/dev/null)" != "" ]; then
+  WORKSPACE_ALREADY_EXISTS=1
   mkdir -p "${BACKUP_ROOT}"
   BACKUP_DIR="${BACKUP_ROOT}/preset-apply-${STAMP}"
   mkdir -p "${BACKUP_DIR}"
@@ -41,7 +43,23 @@ if [ -d "${WORKSPACE_DIR}" ] && [ "$(ls -A "${WORKSPACE_DIR}" 2>/dev/null)" != "
 fi
 
 echo "Applying workspace into ${WORKSPACE_DIR}"
-cp -R "${PRESET_ROOT}/workspace/." "${WORKSPACE_DIR}/"
+if [ "${WORKSPACE_ALREADY_EXISTS}" -eq 1 ]; then
+  echo "Preserving tenant-specific workspace files during re-apply"
+  rsync -a \
+    --exclude 'USER.md' \
+    --exclude 'TOOLS.md' \
+    --exclude 'MEMORY.md' \
+    --exclude 'IDENTITY.md' \
+    --exclude 'HEARTBEAT.md' \
+    --exclude 'onboarding/' \
+    --exclude 'state/tasks.json' \
+    --exclude 'state/today.json' \
+    --exclude 'state/business.json' \
+    --exclude 'state/workflows.json' \
+    "${PRESET_ROOT}/workspace/" "${WORKSPACE_DIR}/"
+else
+  cp -R "${PRESET_ROOT}/workspace/." "${WORKSPACE_DIR}/"
+fi
 
 if [ ! -f "${CONFIG_PATH}" ]; then
   cp "${PRESET_ROOT}/config/openclaw.base.json5" "${CONFIG_PATH}"
