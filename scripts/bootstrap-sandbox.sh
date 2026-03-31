@@ -72,7 +72,7 @@ fi
 
 if command -v playwright >/dev/null 2>&1; then
   echo "Ensuring Chromium browser is installed ..."
-  playwright install chromium --with-deps
+  DEBIAN_FRONTEND=noninteractive playwright install chromium --with-deps
 fi
 
 if command -v python3 >/dev/null 2>&1; then
