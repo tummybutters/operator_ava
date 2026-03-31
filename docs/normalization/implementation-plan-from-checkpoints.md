@@ -321,6 +321,44 @@ Done means:
 - the next factory rerun can get past Phase 11 for the right reasons
 - Phase 5 ready-check automation has a live runtime layer to validate
 
+## Phase 4.6 - Own gateway pairing and initial agent auth seeding
+
+Goal:
+
+- close the gap between a reachable gateway and a tenant that can actually answer
+
+Files to add or change:
+
+- `scripts/run-openclaw.sh`
+- `scripts/install-runtime.sh`
+- `scripts/ready-check.sh`
+- gateway/auth handoff docs
+- possibly a new helper such as:
+  - `scripts/seed-agent-auth.sh`
+  - or a deterministic gateway pairing helper
+
+Required changes:
+
+- generate and persist the gateway handoff token from the same live config the gateway will actually use
+- make the handoff artifact point at the real live token instead of a drift-prone side file
+- define how browser device pairing is handled on a fresh server:
+  - explicit approval step
+  - deterministic approval helper
+  - or controlled auto-approval for the intended dashboard role
+- ensure the production dashboard origin is allowed by default
+- ensure the dashboard/browser device-auth flow matches the gateway protocol
+- seed the main agent auth store when provider credentials are already available
+- fail clearly when the tenant is connected but the agent cannot run due to missing provider auth
+
+Done means:
+
+- a fresh deploy can move from:
+  - live dashboard URL
+  - to browser pairing
+  - to a successful first message
+  without ad hoc shell debugging
+- the remaining manual boundary is explicit and narrow when credentials are intentionally omitted
+
 ## Phase 5 - Implement the ready-check as code
 
 Goal:
@@ -339,6 +377,8 @@ Required checks to automate first:
 - shared state JSON validation
 - runtime process and gateway reachability
 - dashboard handshake contract validation
+- device pairing / pending-request detection
+- agent auth-store presence for the default tenant agent
 
 Checks that may start semi-manual before full automation:
 

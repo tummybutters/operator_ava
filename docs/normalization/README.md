@@ -57,3 +57,5 @@ They do not, by themselves, mean the system is already normalized.
   - the ordered implementation plan that maps the normalization checkpoints onto the current repo, scripts, and highest-leverage code changes
 - `fresh-hetzner-box-ava-e2e-runbook.md`
   - the execution runbook for the first clean-slate factory test on a brand-new Hetzner server
+- `fresh-box-e2e-test-01-findings.md`
+  - the preserved findings from the first real clean-slate factory validation run on a fresh Hetzner box
