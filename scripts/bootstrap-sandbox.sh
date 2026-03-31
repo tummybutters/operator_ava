@@ -77,7 +77,7 @@ fi
 
 if command -v python3 >/dev/null 2>&1; then
   echo "Ensuring PDF form dependencies are installed ..."
-  python3 -m pip install --user pymupdf pypdf
+  python3 -m pip install --user pymupdf pypdf --break-system-packages
 else
   echo "python3 not found; skipping PDF dependency install"
 fi
