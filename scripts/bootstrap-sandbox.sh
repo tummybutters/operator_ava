@@ -75,6 +75,17 @@ if command -v playwright >/dev/null 2>&1; then
   DEBIAN_FRONTEND=noninteractive playwright install chromium --with-deps
 fi
 
+if command -v playwright >/dev/null 2>&1 && ! command -v playwright-cli >/dev/null 2>&1; then
+  echo "Linking playwright-cli -> playwright for workspace browser tasks ..."
+  PLAYWRIGHT_BIN="$(command -v playwright)"
+  mkdir -p "${HOME}/.local/bin"
+  cat > "${HOME}/.local/bin/playwright-cli" <<EOF
+#!/usr/bin/env bash
+exec "${PLAYWRIGHT_BIN}" "\$@"
+EOF
+  chmod +x "${HOME}/.local/bin/playwright-cli"
+fi
+
 if command -v python3 >/dev/null 2>&1; then
   echo "Ensuring PDF form dependencies are installed ..."
   if ! python3 -m pip --version >/dev/null 2>&1; then
