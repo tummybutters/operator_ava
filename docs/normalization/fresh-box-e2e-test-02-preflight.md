@@ -76,7 +76,7 @@
 2. **Update packages.** `apt update && apt upgrade -y`, `DEBIAN_FRONTEND=noninteractive` for any interactive prompts.
 3. **Clone or pull `operator_ava`** onto the server. Confirm the commit matches the expected main.
 4. **Run `bootstrap-sandbox.sh`.** Watch for the four previously-fixed defects to confirm they stay fixed. If any fail, stop — do not hand-patch.
-5. **Run `install-runtime.sh`.** Verify `openclaw` is callable and `node /root/NemoClaw/bin/nemoclaw.js --help` succeeds before proceeding.
+5. **Run `install-runtime.sh`.** Verify `openclaw` is callable and `nemoclaw --help` succeeds (wrapper installed to `~/.local/bin`) before proceeding. The canonical gateway start is `run-openclaw.sh` → `openclaw gateway run`; do not use `nemoclaw start`.
 
 ---
 

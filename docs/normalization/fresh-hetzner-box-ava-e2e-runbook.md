@@ -230,7 +230,7 @@ Expected outcome:
 - `openclaw` is callable on the host
 - NemoClaw is cloned under `/root/NemoClaw`
 - NemoClaw dependencies are installed
-- `node /root/NemoClaw/bin/nemoclaw.js --help` succeeds
+- `nemoclaw --help` succeeds (NemoClaw wrapper installed to `~/.local/bin`)
 - optional non-interactive `nemoclaw onboard` becomes available when provider credentials are supplied
 
 Notes:
@@ -238,6 +238,7 @@ Notes:
 - this closes the runtime gap discovered in the first clean Hetzner factory run
 - `run-openclaw.sh` should never be the first place a missing runtime is discovered
 - onboarding credentials can remain a later/manual boundary if they are not yet available
+- NemoClaw is installed as runtime plumbing. The canonical operator gateway path is `run-openclaw.sh` → `openclaw gateway run`. Do not use `nemoclaw start` for tenant operations.
 
 ## Phase 7 - Apply the canonical runtime layout and workspace preset
 
@@ -335,8 +336,19 @@ Expected outputs:
 - allowed dashboard origin configured
 - valid tenant gateway host or tunnel
 - valid dashboard handoff link
+- pending browser device can be approved from the server side
+- dashboard reaches a live connected state
 
 This phase should result in a real handoff URL, not just a working local runtime.
+
+Canonical handoff flow:
+
+1. Generate the dashboard URL.
+2. Give the operator the URL.
+3. Let the operator open the dashboard.
+4. Approve the next pending browser device.
+5. Confirm the dashboard connects.
+6. Send the first message.
 
 ## Phase 12 - Run the ready-check
 

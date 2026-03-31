@@ -98,6 +98,7 @@ seed_initial_model_config() {
 }
 
 if command -v openclaw >/dev/null 2>&1; then
+  openclaw config set gateway.trustedProxies '["127.0.0.1","::1"]' --strict-json
   openclaw config set agents.defaults.workspace "${WORKSPACE_DIR}"
   openclaw config set agents.defaults.skipBootstrap true --strict-json
   openclaw config set tools.exec.host gateway

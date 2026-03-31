@@ -28,10 +28,9 @@ echo "Watching for pending device pairing requests (timeout: ${TIMEOUT}s) ..."
 
 while [ "${ELAPSED}" -lt "${TIMEOUT}" ]; do
   PENDING_ID="$(
-    OPENCLAW_STATE_DIR="${STATE_DIR}" openclaw devices list 2>/dev/null \
-      | grep -A2 "Pending" \
-      | grep -oE '[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}' \
-      | head -1 || true
+    OPENCLAW_STATE_DIR="${STATE_DIR}" openclaw devices list --json 2>/dev/null \
+      | python3 -c "import sys,json; d=json.load(sys.stdin); reqs=d.get('pending',[]); print(reqs[0]['requestId'] if reqs else '')" 2>/dev/null \
+      || true
   )"
 
   if [ -n "${PENDING_ID}" ]; then
