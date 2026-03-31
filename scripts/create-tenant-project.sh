@@ -31,4 +31,4 @@ echo
 echo "Next:"
 echo "  1. cd ${TARGET_DIR}"
 echo "  2. initialize git or create a fork/project repo"
-echo "  3. run scripts/bootstrap-sandbox.sh and scripts/apply-preset.sh in the target environment"
+echo "  3. run scripts/bootstrap-sandbox.sh, scripts/install-runtime.sh, and scripts/apply-preset.sh in the target environment"

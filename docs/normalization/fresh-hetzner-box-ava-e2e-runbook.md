@@ -95,13 +95,14 @@ Use a second fresh server so the test measures the factory path, not a migration
 2. Prepare the host baseline.
 3. Clone `operator_ava`.
 4. Normalize the tenant input.
-5. Apply the golden server/runtime baseline.
-6. Apply the golden workspace preset into the canonical state root.
-7. Personalize the tenant from the profile.
-8. Start runtime and gateway wiring.
-9. Produce the dashboard link.
-10. Run the ready-check.
-11. Stop at manual auth if the tenant is otherwise ready.
+5. Apply the golden server baseline.
+6. Install the OpenClaw/NemoClaw runtime layer.
+7. Apply the golden workspace preset into the canonical state root.
+8. Personalize the tenant from the profile.
+9. Start runtime and gateway wiring.
+10. Produce the dashboard link.
+11. Run the ready-check.
+12. Stop at manual auth if the tenant is otherwise ready.
 
 ## Phase 1 - Fresh server creation
 
@@ -211,6 +212,32 @@ Notes:
 
 - this step should not be blocked by missing tenant auth
 - auth remains a later/manual boundary
+
+## Phase 6.5 - Install the runtime layer
+
+Goal:
+
+- install the actual OpenClaw/NemoClaw engine on the fresh box
+
+Primary command shape:
+
+```bash
+./scripts/install-runtime.sh
+```
+
+Expected outcome:
+
+- `openclaw` is callable on the host
+- NemoClaw is cloned under `/root/NemoClaw`
+- NemoClaw dependencies are installed
+- `node /root/NemoClaw/bin/nemoclaw.js --help` succeeds
+- optional non-interactive `nemoclaw onboard` becomes available when provider credentials are supplied
+
+Notes:
+
+- this closes the runtime gap discovered in the first clean Hetzner factory run
+- `run-openclaw.sh` should never be the first place a missing runtime is discovered
+- onboarding credentials can remain a later/manual boundary if they are not yet available
 
 ## Phase 7 - Apply the canonical runtime layout and workspace preset
 

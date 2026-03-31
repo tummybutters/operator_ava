@@ -136,4 +136,5 @@ echo "  twilio login"
 echo
 echo "Sandbox bootstrap complete."
 echo "Next:"
+echo "  ${PRESET_ROOT}/scripts/install-runtime.sh"
 echo "  ${PRESET_ROOT}/scripts/apply-preset.sh"

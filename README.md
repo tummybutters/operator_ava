@@ -35,6 +35,7 @@ What does not belong here:
 - `factory/` - tenant-creation and cloud-personalization templates
 - `config/openclaw.base.json5` - base config for a fresh writable state dir
 - `scripts/bootstrap-sandbox.sh` - installs sandbox-safe runtime dependencies
+- `scripts/install-runtime.sh` - installs the OpenClaw CLI plus the NemoClaw runtime on a fresh host
 - `scripts/apply-preset.sh` - copies this preset into a target state/workspace
 - `scripts/run-openclaw.sh` - launches OpenClaw against the target state dir
 - `scripts/create-tenant-project.sh` - clones this preset into a new tenant project
@@ -87,6 +88,7 @@ The intended repeatable flow is:
 ./scripts/create-tenant-project.sh acme-broker
 cd ../acme-broker
 ./scripts/bootstrap-sandbox.sh
+./scripts/install-runtime.sh
 ./scripts/apply-preset.sh
 ./scripts/stage-personalization.sh /sandbox/.openclaw/workspace --profile /path/to/tenant-profile.json --intake /path/to/intake.md --transcript /path/to/transcript.md
 ```
@@ -113,6 +115,7 @@ From inside a writable sandbox:
 
 ```bash
 ./scripts/bootstrap-sandbox.sh
+./scripts/install-runtime.sh
 ./scripts/apply-preset.sh
 ./scripts/run-openclaw.sh
 ```
@@ -153,6 +156,27 @@ Default utility/media stack now includes:
 - `yt-dlp`
 - `twilio`
 - `ngrok`
+
+Runtime install now owns:
+
+- Docker
+- `cloudflared`
+- the `openclaw` CLI
+- NemoClaw clone/update at `/root/NemoClaw`
+- a `nemoclaw` wrapper under `~/.local/bin`
+
+When provider credentials are available, `scripts/install-runtime.sh` can also run a non-interactive `nemoclaw onboard` flow:
+
+```bash
+RUN_NEMOCLAW_ONBOARD=1 \
+NEMOCLAW_PROVIDER=compatible-endpoint \
+NEMOCLAW_MODEL=anthropic/claude-haiku-4-5 \
+NEMOCLAW_ENDPOINT_URL=https://openrouter.ai/api/v1 \
+COMPATIBLE_API_KEY=... \
+./scripts/install-runtime.sh
+```
+
+Without those env vars, the runtime install still completes and leaves onboarding as the next explicit step.
 
 Optional installs:
 

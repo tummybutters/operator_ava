@@ -51,6 +51,15 @@ export OPENCLAW_STATE_DIR="${STATE_DIR}"
 export OPENCLAW_CONFIG_PATH="${CONFIG_PATH}"
 export PATH="${HOME}/.local/bin:${PATH}"
 
+if [ -z "${NVM_DIR:-}" ] && [ -d "${HOME}/.nvm" ]; then
+  export NVM_DIR="${HOME}/.nvm"
+fi
+
+if [ -n "${NVM_DIR:-}" ] && [ -s "${NVM_DIR}/nvm.sh" ]; then
+  # shellcheck disable=SC1090
+  . "${NVM_DIR}/nvm.sh"
+fi
+
 if command -v openclaw >/dev/null 2>&1; then
   openclaw config set agents.defaults.workspace "${WORKSPACE_DIR}"
   openclaw config set agents.defaults.skipBootstrap true --strict-json

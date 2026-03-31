@@ -291,6 +291,36 @@ Done means:
 
 - the dashboard can render a fresh tenant without guessing
 
+## Phase 4.5 - Own the runtime install and start path
+
+Goal:
+
+- close the gap between workspace provisioning and a live engine
+
+Files to add or change:
+
+- `scripts/install-runtime.sh`
+- `scripts/run-openclaw.sh`
+- `scripts/apply-preset.sh`
+- `README.md`
+- fresh-deploy runbook docs
+
+Required changes:
+
+- install or update `openclaw` on a fresh host
+- clone or update NemoClaw in a canonical location
+- install NemoClaw dependencies
+- make a `nemoclaw` entrypoint available without shell-memory tricks
+- source `nvm` inside repo scripts when it is present so runtime commands work in normal shells
+- fail loudly when `run-openclaw.sh` is asked to launch without a runtime installed
+- support optional non-interactive `nemoclaw onboard` when provider credentials are provided
+
+Done means:
+
+- a fresh deploy can reach a callable OpenClaw/NemoClaw runtime without manual shell forensics
+- the next factory rerun can get past Phase 11 for the right reasons
+- Phase 5 ready-check automation has a live runtime layer to validate
+
 ## Phase 5 - Implement the ready-check as code
 
 Goal:
@@ -417,8 +447,8 @@ The deploy succeeds without needing path forensics, temp-workspace debugging, or
 
 ## Immediate Next Move
 
-Now that phases 1 through 3 are in place, the next implementation ticket should be:
+Now that phases 1 through 4.5 are in place, the next implementation ticket should be:
 
-`Turn the shared state layer into a factory-owned contract.`
+`Implement the ready-check as code.`
 
-That is the next highest-leverage change because onboarding now flows through the normalized profile, but the factory still needs to guarantee the initial dashboard-facing state end to end.
+The first fresh-box factory run proved the workspace layer and exposed the missing runtime-install step. Once the runtime layer is owned by the factory, the next highest-leverage move is making readiness executable instead of judgment-only.

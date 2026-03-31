@@ -139,6 +139,27 @@ Notes:
 - this is the point where the machine becomes predictable
 - this step should not yet require tenant browser auth
 
+## Step 4.5 - Install the runtime layer
+
+Input:
+
+- fresh server
+- Node runtime baseline
+- runtime install script and version assumptions
+
+Output:
+
+- `openclaw` installed on the host
+- NemoClaw cloned in a canonical location
+- NemoClaw dependencies installed
+- optional non-interactive onboarding path available when provider credentials are supplied
+
+Notes:
+
+- this is the missing layer discovered in the first clean Hetzner factory run
+- runtime install should not depend on shell history or old-box memory
+- `run-openclaw.sh` should assume this step has already happened and fail loudly if it has not
+
 ## Step 5 - Apply base runtime config
 
 Input:
