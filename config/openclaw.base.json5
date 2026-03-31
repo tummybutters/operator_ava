@@ -22,6 +22,8 @@
   tools: {
     exec: {
       host: "gateway",
+      security: "full",
+      ask: "off",
       pathPrepend: ["/root/.local/bin"],
     },
   },

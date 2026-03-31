@@ -101,6 +101,8 @@ if command -v openclaw >/dev/null 2>&1; then
   openclaw config set agents.defaults.workspace "${WORKSPACE_DIR}"
   openclaw config set agents.defaults.skipBootstrap true --strict-json
   openclaw config set tools.exec.host gateway
+  openclaw config set tools.exec.security full
+  openclaw config set tools.exec.ask off
   openclaw config set tools.exec.pathPrepend '["/root/.local/bin"]' --strict-json
   seed_initial_model_config
 else
