@@ -29,6 +29,27 @@ require_cmd() {
   fi
 }
 
+apt_get_retry() {
+  local max_attempts="${APT_RETRY_MAX_ATTEMPTS:-24}"
+  local sleep_seconds="${APT_RETRY_SLEEP_SECONDS:-5}"
+  local attempt=1
+
+  while true; do
+    if "$@"; then
+      return 0
+    fi
+
+    local exit_code=$?
+    if [ "${attempt}" -ge "${max_attempts}" ]; then
+      return "${exit_code}"
+    fi
+
+    echo "apt/dpkg busy or not ready yet; retrying in ${sleep_seconds}s ..."
+    attempt=$((attempt + 1))
+    sleep "${sleep_seconds}"
+  done
+}
+
 install_docker() {
   if command -v docker >/dev/null 2>&1; then
     echo "docker already installed"
@@ -64,8 +85,8 @@ install_cloudflared() {
     | gpg --dearmor -o /usr/share/keyrings/cloudflare-main.gpg
   echo "deb [signed-by=/usr/share/keyrings/cloudflare-main.gpg] https://pkg.cloudflare.com/cloudflared $(lsb_release -cs) main" \
     > /etc/apt/sources.list.d/cloudflared.list
-  apt-get update -y >/dev/null
-  DEBIAN_FRONTEND=noninteractive apt-get install -y cloudflared
+  apt_get_retry apt-get update -y >/dev/null
+  apt_get_retry env DEBIAN_FRONTEND=noninteractive apt-get install -y cloudflared
 }
 
 install_openclaw() {
