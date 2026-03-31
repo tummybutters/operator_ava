@@ -1,6 +1,9 @@
 {
   gateway: {
     mode: "local",
+    controlUi: {
+      allowedOrigins: ["https://broker-dashboard-flax.vercel.app"],
+    },
   },
   agents: {
     defaults: {
