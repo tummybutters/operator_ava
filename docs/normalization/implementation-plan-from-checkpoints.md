@@ -348,7 +348,8 @@ Required changes:
 - ensure the production dashboard origin is allowed by default
 - ensure the dashboard/browser device-auth flow matches the gateway protocol
 - seed initial provider/model auth through the smallest supported path when credentials are already available:
-  - prefer `models.providers.*.apiKey` plus the default model in config for first boot
+  - prefer provider-native config/env paths for first boot
+  - for OpenRouter, mint a tenant-scoped child key from the management key and seed `env.OPENROUTER_API_KEY`
   - use `auth-profiles.json` only when a provider flow truly requires it
 - fail clearly when the tenant is connected but the agent cannot run due to missing provider auth
 

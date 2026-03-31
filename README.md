@@ -37,6 +37,7 @@ What does not belong here:
 - `scripts/bootstrap-sandbox.sh` - installs sandbox-safe runtime dependencies
 - `scripts/install-runtime.sh` - installs the OpenClaw CLI plus the NemoClaw runtime on a fresh host
 - `scripts/apply-preset.sh` - copies this preset into a target state/workspace
+- `scripts/create-openrouter-key.sh` - mints a tenant-scoped OpenRouter child key from a management key
 - `scripts/run-openclaw.sh` - launches OpenClaw against the target state dir
 - `scripts/create-tenant-project.sh` - clones this preset into a new tenant project
 - `scripts/stage-personalization.sh` - stages the normalized tenant profile plus supporting onboarding files into a live workspace for AI-driven personalization
@@ -178,15 +179,24 @@ COMPATIBLE_API_KEY=... \
 
 Without those env vars, the runtime install still completes and leaves onboarding as the next explicit step.
 
-For the simplest first-boot model setup, `scripts/apply-preset.sh` can seed OpenClaw directly from env without a separate auth-profile step:
+For the simplest first-boot OpenRouter setup, create a child key and seed it into the live config during preset apply:
 
 ```bash
-OPENROUTER_API_KEY=... \
+OPENROUTER_ADMIN_KEY=... \
+./scripts/create-openrouter-key.sh \
+  --name acme-broker \
+  --out /tmp/acme.openrouter.key
+```
+
+Then:
+
+```bash
+OPENROUTER_API_KEY_FILE=/tmp/acme.openrouter.key \
 OPENCLAW_DEFAULT_MODEL=openrouter/xiaomi/mimo-v2-pro \
 ./scripts/apply-preset.sh
 ```
 
-That writes the OpenRouter provider key into the live config and sets the default model in one pass.
+That writes `env.OPENROUTER_API_KEY` into the live OpenClaw config and sets the default model in one pass.
 
 Optional installs:
 

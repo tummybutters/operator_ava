@@ -62,10 +62,15 @@ fi
 
 seed_initial_model_config() {
   local default_model="${OPENCLAW_DEFAULT_MODEL:-}"
+  local openrouter_api_key="${OPENROUTER_API_KEY:-}"
 
-  if [ -n "${OPENROUTER_API_KEY:-}" ]; then
-    openclaw config set models.providers.openrouter.apiKey "${OPENROUTER_API_KEY}"
-    echo "Seeded models.providers.openrouter.apiKey from OPENROUTER_API_KEY"
+  if [ -z "${openrouter_api_key}" ] && [ -n "${OPENROUTER_API_KEY_FILE:-}" ] && [ -f "${OPENROUTER_API_KEY_FILE}" ]; then
+    openrouter_api_key="$(tr -d '\r\n' < "${OPENROUTER_API_KEY_FILE}")"
+  fi
+
+  if [ -n "${openrouter_api_key}" ]; then
+    openclaw config set env.OPENROUTER_API_KEY "${openrouter_api_key}"
+    echo "Seeded env.OPENROUTER_API_KEY for OpenRouter"
   fi
 
   if [ -n "${default_model}" ]; then

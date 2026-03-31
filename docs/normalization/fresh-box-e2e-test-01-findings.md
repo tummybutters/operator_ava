@@ -190,6 +190,12 @@ But it still does not yet guarantee:
   - environment variables
   - `models.providers.*.apiKey`
 
+For OpenRouter specifically, the cleanest first-boot path is:
+
+- mint a tenant-scoped child key from the OpenRouter management key
+- seed `env.OPENROUTER_API_KEY`
+- set the tenant default model to the chosen `openrouter/...` model
+
 ## Implication For One-Click Deploy
 
 The path is much closer than before.
