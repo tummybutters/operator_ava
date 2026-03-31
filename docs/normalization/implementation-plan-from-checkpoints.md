@@ -2,7 +2,7 @@
 
 ## Status
 
-Planning document.
+Living planning document. Updated after fresh-box e2e test 02 (2026-03-31).
 
 This document turns checkpoints 1 through 6 into an ordered implementation plan against the current `operator_ava` repo and the live Sandlers/OpenClaw deployment model.
 
@@ -488,10 +488,44 @@ And most importantly:
 
 The deploy succeeds without needing path forensics, temp-workspace debugging, or hidden operator memory.
 
+## What Run 02 Proved (2026-03-31)
+
+Fresh-box e2e test 02 ran against a Hetzner rebuild of `nemoclaw-htz-002` and reached a live dashboard with a passing smoke test. Full findings: `docs/normalization/fresh-box-e2e-test-02-findings.md`.
+
+Phases that are now confirmed factory-owned:
+
+- Phase 1 — canonical runtime paths: confirmed, no `/sandbox/.openclaw-sandlers` in any resolved path
+- Phase 2 — tenant profile template: confirmed, profile drove all six personalization outputs cleanly
+- Phase 3 — profile-first personalization: confirmed, `stage-personalization.sh --profile` works end to end
+- Phase 4 — shared state initialization: confirmed, all four state JSON files seeded correctly
+- Phase 4.5 — runtime install: confirmed, `install-runtime.sh` owns Docker, cloudflared, openclaw, NemoClaw
+- Phase 4.6 — provider auth seeding: confirmed, `create-openrouter-key.sh` + `apply-preset.sh` own the full OpenRouter child-key and model-seed path without manual config writes
+
+One new defect found and fixed: `bootstrap-sandbox.sh` now self-installs `python3-pip` on Ubuntu 24.04 hosts where pip is missing.
+
+What is still manual after run 02:
+
+- nvm / Node install before bootstrap — no script, documented sequence only
+- cloudflared tunnel start — single command, not yet called by a factory script
+- Device pairing approval — `openclaw devices approve <request-id>` works but is not yet called by the factory
+- Handoff link construction — manual assembly from config values
+- Ready-check — checkpoint 6 is still a manual walkthrough
+- Post-provision auth (Telegram, Microsoft, SandlerPortal, SCOUT, Google Drive) — accepted manual boundary
+
 ## Immediate Next Move
 
-Now that phases 1 through 4.5 are in place, the next implementation ticket should be:
+The factory path is now proven end to end. The highest-leverage remaining simplification is not adding new scripts — it is **collapsing the three manual pre-bootstrap shell steps into one**.
+
+The current pre-bootstrap sequence requires the operator to know:
+
+1. Install nvm
+2. Source nvm
+3. Install Node LTS
+
+A single `scripts/bootstrap-host.sh` (or a guard at the top of `bootstrap-sandbox.sh`) that self-installs nvm and Node if missing would remove the last piece of required operator shell memory before the factory scripts take over.
+
+After that, the next ticket is:
 
 `Implement the ready-check as code.`
 
-The first fresh-box factory run proved the workspace layer and exposed the missing runtime-install step. Once the runtime layer is owned by the factory, the next highest-leverage move is making readiness executable instead of judgment-only.
+The factory can now provision, personalize, start, and expose a tenant. The missing piece is a script that verifies the result and produces a machine-readable handoff artifact instead of a manual walkthrough.

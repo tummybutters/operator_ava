@@ -77,6 +77,14 @@ fi
 
 if command -v python3 >/dev/null 2>&1; then
   echo "Ensuring PDF form dependencies are installed ..."
+  if ! python3 -m pip --version >/dev/null 2>&1; then
+    echo "pip not found; installing python3-pip ..."
+    if command -v sudo >/dev/null 2>&1; then
+      sudo apt-get install -y python3-pip >/dev/null 2>&1
+    else
+      apt-get install -y python3-pip >/dev/null 2>&1
+    fi
+  fi
   python3 -m pip install --user pymupdf pypdf --break-system-packages
 else
   echo "python3 not found; skipping PDF dependency install"

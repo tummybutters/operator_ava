@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "deploymentMode": "fresh",
+  "timezone": "America/Los_Angeles",
+  "contact": {
+    "fullName": "Factory Test User",
+    "businessName": "Qortana Sandlers Factory Test",
+    "email": "factory-test@teamqortana.com",
+    "phone": "555-010-0001",
+    "legalConsent": true
+  },
+  "classification": {
+    "operatorType": "Sandler agent",
+    "businessStructure": "Solo independent agent",
+    "territory": "Regional"
+  },
+  "salesProfile": {
+    "serviceMix": [
+      "Internet",
+      "UC / phones"
+    ],
+    "biggestWeeklyWorkload": "A mix of everything",
+    "activeOpportunityRange": "6-15",
+    "weeklyQuoteVolume": "3-5",
+    "monthlyRepeatingTasks": [
+      "Build internet quotes from SCOUT or carrier pricing",
+      "Rework quotes after client feedback"
+    ],
+    "newOpportunityFirstAction": "I open SCOUT or provider tools",
+    "stallPoints": [
+      "Waiting on provider portal work",
+      "Waiting on me to follow up"
+    ],
+    "quoteDelayCauses": [
+      "Logging into portals",
+      "Too many moving pieces"
+    ],
+    "multiVendorComplexity": "Often"
+  },
+  "systemsProfile": {
+    "systemsInUse": [
+      "Microsoft 365 / Outlook",
+      "SandlerPortal",
+      "SCOUT",
+      "Google Drive / Dropbox"
+    ],
+    "mandatorySystems": [
+      "SandlerPortal",
+      "SCOUT",
+      "Microsoft 365 / Outlook"
+    ],
+    "accountsToPrepareFirst": [
+      "Microsoft",
+      "SandlerPortal",
+      "SCOUT"
+    ],
+    "browserPortalReliance": "Mostly browser portals",
+    "fileStorage": "Google Drive / Dropbox",
+    "noteHabits": "Mixed everywhere",
+    "folderOrganization": "Good enough but inconsistent"
+  },
+  "operationsProfile": {
+    "quotePriority": "Both internet and UC",
+    "paperworkBehavior": "I prepare and send it myself",
+    "commissionTracking": "I review them monthly",
+    "immediateValueGoal": "Less portal chaos"
+  },
+  "approvalProfile": {
+    "approvalBoundaries": [
+      "Client-facing sends",
+      "Portal submissions",
+      "Contract / e-sign actions"
+    ]
+  }
+}
