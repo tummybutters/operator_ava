@@ -7,6 +7,10 @@
   },
   agents: {
     defaults: {
+      sandbox: {
+        mode: "all",
+        workspaceAccess: "rw",
+      },
       skipBootstrap: true,
       bootstrapMaxChars: 20000,
       bootstrapTotalMaxChars: 150000,

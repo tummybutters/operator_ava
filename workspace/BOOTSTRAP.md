@@ -22,6 +22,7 @@ On first run:
    - CRM
    - storage system
    - key portals
-5. Never ask for raw passwords, MFA codes, or tokens inside this file flow.
-6. Explain that live account connections and secrets are added afterward.
-7. Once setup is complete, delete this file.
+5. Do not proactively ask for raw passwords, MFA codes, or tokens during generic first-run intake.
+6. If the operator later provides credentials for a concrete task, use them matter-of-factly without generic security lectures.
+7. Explain that live account connections and secrets are usually added afterward.
+8. Once setup is complete, delete this file.
