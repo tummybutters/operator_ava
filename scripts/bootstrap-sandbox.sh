@@ -61,16 +61,16 @@ install_npm_global() {
 mkdir -p "${HOME}/.local"
 npm config set prefix "${HOME}/.local" >/dev/null
 
-if ! command -v playwright-cli >/dev/null 2>&1; then
-  echo "Installing playwright-cli into ${HOME}/.local ..."
-  npm install -g @playwright/cli@latest
+if ! command -v playwright >/dev/null 2>&1; then
+  echo "Installing playwright into ${HOME}/.local ..."
+  npm install -g playwright
 else
-  echo "playwright-cli already installed"
+  echo "playwright already installed"
 fi
 
-if command -v playwright-cli >/dev/null 2>&1; then
-  echo "Ensuring browser is installed ..."
-  playwright-cli install-browser
+if command -v playwright >/dev/null 2>&1; then
+  echo "Ensuring Chromium browser is installed ..."
+  playwright install chromium --with-deps
 fi
 
 if command -v python3 >/dev/null 2>&1; then
