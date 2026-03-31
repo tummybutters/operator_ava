@@ -60,10 +60,25 @@ if [ -n "${NVM_DIR:-}" ] && [ -s "${NVM_DIR}/nvm.sh" ]; then
   . "${NVM_DIR}/nvm.sh"
 fi
 
+seed_initial_model_config() {
+  local default_model="${OPENCLAW_DEFAULT_MODEL:-}"
+
+  if [ -n "${OPENROUTER_API_KEY:-}" ]; then
+    openclaw config set models.providers.openrouter.apiKey "${OPENROUTER_API_KEY}"
+    echo "Seeded models.providers.openrouter.apiKey from OPENROUTER_API_KEY"
+  fi
+
+  if [ -n "${default_model}" ]; then
+    openclaw models set "${default_model}"
+    echo "Set default model: ${default_model}"
+  fi
+}
+
 if command -v openclaw >/dev/null 2>&1; then
   openclaw config set agents.defaults.workspace "${WORKSPACE_DIR}"
   openclaw config set agents.defaults.skipBootstrap true --strict-json
   openclaw config set tools.exec.pathPrepend '["/sandbox/.local/bin"]' --strict-json
+  seed_initial_model_config
 else
   echo "openclaw not found on PATH; copied files only"
 fi

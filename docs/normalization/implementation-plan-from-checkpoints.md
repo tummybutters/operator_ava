@@ -347,7 +347,9 @@ Required changes:
   - or controlled auto-approval for the intended dashboard role
 - ensure the production dashboard origin is allowed by default
 - ensure the dashboard/browser device-auth flow matches the gateway protocol
-- seed the main agent auth store when provider credentials are already available
+- seed initial provider/model auth through the smallest supported path when credentials are already available:
+  - prefer `models.providers.*.apiKey` plus the default model in config for first boot
+  - use `auth-profiles.json` only when a provider flow truly requires it
 - fail clearly when the tenant is connected but the agent cannot run due to missing provider auth
 
 Done means:

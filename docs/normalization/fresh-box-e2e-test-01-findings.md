@@ -165,13 +165,13 @@ This is not the same kind of failure as:
 - origin rejection
 - missing pairing
 
-It means the deployment is now blocked at initial agent auth seeding, not at connectivity.
+It means the deployment is now blocked at initial provider/model auth seeding, not at connectivity.
 
 ## Most Important New Learning
 
 The one-click deploy path is now missing a smaller, more specific layer:
 
-- seed or provision the main agent auth profile for the tenant
+- seed or provision the initial provider/model credentials for the tenant
 
 The system can now:
 
@@ -185,8 +185,10 @@ The system can now:
 
 But it still does not yet guarantee:
 
-- the agent has the right provider credentials in:
-  - `/sandbox/.openclaw/agents/main/agent/auth-profiles.json`
+- the agent has the right provider credentials through one of OpenClaw's supported resolution paths:
+  - `auth-profiles.json`
+  - environment variables
+  - `models.providers.*.apiKey`
 
 ## Implication For One-Click Deploy
 
@@ -196,7 +198,7 @@ The next normalization target is not broad “debugging.”
 
 It is a precise factory-owned step:
 
-- install and seed the initial agent auth profile
+- install and seed the initial provider/model auth
 - or explicitly classify it as a manual post-provision auth boundary
 
 ## Recommended Next Implementation Ticket
@@ -210,7 +212,7 @@ That phase should answer:
 
 - how gateway tokens are generated and handed off
 - how dashboard browser devices are approved or auto-approved in controlled cases
-- how the main agent gets its initial provider auth store
+- how the main agent gets its initial provider/model auth through the simplest supported path
 
 ## Recommended Validation Interpretation
 

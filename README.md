@@ -178,6 +178,16 @@ COMPATIBLE_API_KEY=... \
 
 Without those env vars, the runtime install still completes and leaves onboarding as the next explicit step.
 
+For the simplest first-boot model setup, `scripts/apply-preset.sh` can seed OpenClaw directly from env without a separate auth-profile step:
+
+```bash
+OPENROUTER_API_KEY=... \
+OPENCLAW_DEFAULT_MODEL=openrouter/xiaomi/mimo-v2-pro \
+./scripts/apply-preset.sh
+```
+
+That writes the OpenRouter provider key into the live config and sets the default model in one pass.
+
 Optional installs:
 
 ```bash
