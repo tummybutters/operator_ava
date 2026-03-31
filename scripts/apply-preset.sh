@@ -104,6 +104,11 @@ if command -v openclaw >/dev/null 2>&1; then
   openclaw config set tools.exec.security full
   openclaw config set tools.exec.ask off
   openclaw config set tools.exec.pathPrepend '["/root/.local/bin"]' --strict-json
+  NPM_GLOBAL_ROOT="$(npm root -g 2>/dev/null || true)"
+  if [ -n "${NPM_GLOBAL_ROOT}" ]; then
+    openclaw config set env.NODE_PATH "${NPM_GLOBAL_ROOT}"
+    echo "Seeded env.NODE_PATH for global npm module access: ${NPM_GLOBAL_ROOT}"
+  fi
   seed_initial_model_config
 else
   echo "openclaw not found on PATH; copied files only"
