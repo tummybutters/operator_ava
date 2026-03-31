@@ -21,8 +21,8 @@
   },
   tools: {
     exec: {
-      host: "sandbox",
-      pathPrepend: ["/sandbox/.local/bin"],
+      host: "gateway",
+      pathPrepend: ["/root/.local/bin"],
     },
   },
 }
