@@ -58,8 +58,10 @@ install_npm_global() {
   npm install -g "$pkg"
 }
 
-mkdir -p "${HOME}/.local"
-npm config set prefix "${HOME}/.local" >/dev/null
+if [ -z "${NVM_DIR:-}" ]; then
+  mkdir -p "${HOME}/.local"
+  npm config set prefix "${HOME}/.local" >/dev/null
+fi
 
 if ! command -v playwright >/dev/null 2>&1; then
   echo "Installing playwright into ${HOME}/.local ..."
